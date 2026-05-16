@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Robot Ratatouille: Culinary Robot Project</title>
-<meta name="theme-color" content="#0a0e1a" />
+<meta name="theme-color" content="#1a1a1a" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -152,32 +152,32 @@
     <svg viewBox="0 0 1100 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ROS 2 design for vision-guided pick and place" class="arch-svg">
       <defs>
         <marker id="arrow-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="#63a2ff" />
+          <path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,0.42)" />
         </marker>
         <marker id="arrow-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="#c084fc" />
+          <path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,0.42)" />
         </marker>
         <marker id="arrow-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="#34d399" />
+          <path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,0.42)" />
         </marker>
 
         <linearGradient id="g-perception" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="rgba(99, 162, 255, 0.18)"/>
-          <stop offset="1" stop-color="rgba(99, 162, 255, 0.06)"/>
+          <stop offset="0" stop-color="rgba(255,255,255,0.055)"/>
+          <stop offset="1" stop-color="rgba(255,255,255,0.018)"/>
         </linearGradient>
         <linearGradient id="g-planning" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="rgba(196, 132, 252, 0.20)"/>
-          <stop offset="1" stop-color="rgba(196, 132, 252, 0.06)"/>
+          <stop offset="0" stop-color="rgba(255,255,255,0.045)"/>
+          <stop offset="1" stop-color="rgba(255,255,255,0.015)"/>
         </linearGradient>
         <linearGradient id="g-hw" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="rgba(52, 211, 153, 0.18)"/>
-          <stop offset="1" stop-color="rgba(52, 211, 153, 0.06)"/>
+          <stop offset="0" stop-color="rgba(255,255,255,0.06)"/>
+          <stop offset="1" stop-color="rgba(255,255,255,0.02)"/>
         </linearGradient>
       </defs>
 
       <!-- Hardware column -->
       <g class="arch-node" data-detail="camera" tabindex="0" role="button" aria-label="RealSense camera details">
-        <rect x="20" y="30" width="240" height="100" rx="10" fill="url(#g-hw)" stroke="#34d399" stroke-opacity="0.7" />
+        <rect x="20" y="30" width="240" height="100" rx="10" fill="url(#g-hw)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
         <text x="140" y="62" text-anchor="middle" class="diag-title">RealSense Camera</text>
         <text x="140" y="84" text-anchor="middle" class="diag-sub">Provides vision</text>
         <text x="140" y="104" text-anchor="middle" class="diag-sub">Publishes Pointclouds</text>
@@ -185,14 +185,14 @@
       
       <!-- YOLO model block -->
       <g class="arch-node" data-detail="yolo-model" tabindex="0" role="button" aria-label="YOLO model details">
-        <rect x="20" y="240" width="240" height="100" rx="10" fill="url(#g-hw)" stroke="#34d399" stroke-opacity="0.7" />
+        <rect x="20" y="240" width="240" height="100" rx="10" fill="url(#g-hw)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
         <text x="140" y="272" text-anchor="middle" class="diag-title">Custom-Trained YOLO Model</text>
         <text x="140" y="296" text-anchor="middle" class="diag-sub">Real-time object detection</text>
         <text x="140" y="318" text-anchor="middle" class="diag-sub">Shows bounding box + class output</text>
       </g>
 
       <g class="arch-node" data-detail="robot" tabindex="0" role="button" aria-label="UR7e arm and gripper details">
-        <rect x="20" y="440" width="240" height="90" rx="10" fill="url(#g-hw)" stroke="#34d399" stroke-opacity="0.7" />
+        <rect x="20" y="440" width="240" height="90" rx="10" fill="url(#g-hw)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
         <text x="140" y="472" text-anchor="middle" class="diag-title">UR7e Arm</text>
         <text x="140" y="494" text-anchor="middle" class="diag-sub">Gripper Attachment</text>
         <text x="140" y="512" text-anchor="middle" class="diag-sub">ROS2</text>
@@ -200,57 +200,57 @@
 
       <!-- Perception package -->
       <g>
-        <rect x="320" y="20" width="320" height="230" rx="12" fill="url(#g-perception)" stroke="#63a2ff" stroke-opacity="0.7" />
+        <rect x="320" y="20" width="320" height="230" rx="12" fill="url(#g-perception)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
         <text x="480" y="46" text-anchor="middle" class="diag-pkg">perception</text>
 
         <g class="arch-node" data-detail="detection" tabindex="0" role="button" aria-label="DetectionNode details">
-          <rect x="340" y="62" width="280" height="50" rx="8" fill="rgba(15, 22, 36, 0.6)" stroke="#63a2ff"/>
+          <rect x="340" y="62" width="280" height="50" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="480" y="82" text-anchor="middle" class="diag-title">DetectionNode</text>
           <text x="480" y="100" text-anchor="middle" class="diag-sub">YOLO → bbox → cloud centroid → TF</text>
         </g>
 
         <g class="arch-node" data-detail="yolo" tabindex="0" role="button" aria-label="YOLODetector details">
-          <rect x="340" y="122" width="135" height="42" rx="6" fill="rgba(15, 22, 36, 0.6)" stroke="#63a2ff"/>
+          <rect x="340" y="122" width="135" height="42" rx="6" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="407" y="148" text-anchor="middle" class="diag-sub">YOLODetector</text>
         </g>
 
         <g class="arch-node" data-detail="pixel" tabindex="0" role="button" aria-label="pixel_to_world details">
-          <rect x="485" y="122" width="135" height="42" rx="6" fill="rgba(15, 22, 36, 0.6)" stroke="#63a2ff"/>
+          <rect x="485" y="122" width="135" height="42" rx="6" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="552" y="148" text-anchor="middle" class="diag-sub">pixel_to_world</text>
         </g>
 
-        <rect x="340" y="172" width="280" height="60" rx="6" fill="rgba(99, 162, 255, 0.06)" stroke="rgba(99, 162, 255, 0.35)"/>
+        <rect x="340" y="172" width="280" height="60" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)"/>
         <text x="480" y="195" text-anchor="middle" class="diag-sub">/detected_pick_point · /detected_class</text>
         <text x="480" y="215" text-anchor="middle" class="diag-sub">· /detected_plate_point</text>
       </g>
 
       <!-- Planning package -->
       <g>
-        <rect x="700" y="20" width="380" height="460" rx="12" fill="url(#g-planning)" stroke="#c084fc" stroke-opacity="0.7" />
+        <rect x="700" y="20" width="380" height="460" rx="12" fill="url(#g-planning)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
         <text x="890" y="46" text-anchor="middle" class="diag-pkg">planning</text>
 
         <g class="arch-node" data-detail="armcircler" tabindex="0" role="button" aria-label="ArmCircler details">
-          <rect x="720" y="62" width="340" height="62" rx="8" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <rect x="720" y="62" width="340" height="62" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="890" y="84" text-anchor="middle" class="diag-title">ArmCircler</text>
           <text x="890" y="104" text-anchor="middle" class="diag-sub">2×20 orbit · saves captured_images/ + poses.npy</text>
         </g>
 
         <g class="arch-node" data-detail="commander" tabindex="0" role="button" aria-label="Commander details">
-          <rect x="720" y="138" width="340" height="78" rx="8" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <rect x="720" y="138" width="340" height="78" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="890" y="160" text-anchor="middle" class="diag-title">Commander (separate terminal)</text>
           <text x="890" y="180" text-anchor="middle" class="diag-sub">segment_batch.py → 6D_poses/run.py</text>
           <text x="890" y="198" text-anchor="middle" class="diag-sub">/start_pick_place · /set_target_class</text>
         </g>
 
         <g class="arch-node" data-detail="poses" tabindex="0" role="button" aria-label="6D Poses details">
-          <rect x="720" y="232" width="160" height="78" rx="8" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <rect x="720" y="232" width="160" height="78" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="800" y="254" text-anchor="middle" class="diag-title">6D Poses</text>
           <text x="800" y="274" text-anchor="middle" class="diag-sub">run.py → triangulation</text>
           <text x="800" y="292" text-anchor="middle" class="diag-sub">results/object_poses.npy</text>
         </g>
 
         <g class="arch-node" data-detail="main" tabindex="0" role="button" aria-label="UR7e_CubeGrasp details">
-          <rect x="900" y="232" width="160" height="86" rx="8" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <rect x="900" y="232" width="160" height="86" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="980" y="254" text-anchor="middle" class="diag-title">UR7e_CubeGrasp</text>
           <text x="980" y="274" text-anchor="middle" class="diag-sub">busy semaphore · job queue</text>
           <text x="980" y="292" text-anchor="middle" class="diag-sub">hover → descend → grip → lift</text>
@@ -258,38 +258,38 @@
         </g>
 
         <g class="arch-node" data-detail="ik" tabindex="0" role="button" aria-label="IKPlanner details">
-          <rect x="720" y="336" width="160" height="46" rx="6" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <rect x="720" y="336" width="160" height="46" rx="6" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="800" y="362" text-anchor="middle" class="diag-sub">IKPlanner</text>
         </g>
 
         <g class="arch-node" data-detail="tf" tabindex="0" role="button" aria-label="static_tf_transform details">
-          <rect x="900" y="336" width="160" height="46" rx="6" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <rect x="900" y="336" width="160" height="46" rx="6" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
           <text x="980" y="362" text-anchor="middle" class="diag-sub">static_tf_transform</text>
         </g>
 
         <g class="arch-node" data-detail="moveit" tabindex="0" role="button" aria-label="MoveIt 2 details">
-          <rect x="720" y="404" width="340" height="46" rx="8" fill="rgba(196, 132, 252, 0.08)" stroke="rgba(196, 132, 252, 0.4)"/>
+          <rect x="720" y="404" width="340" height="46" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)"/>
           <text x="890" y="430" text-anchor="middle" class="diag-sub">MoveIt 2 · /compute_ik · /plan_kinematic_path</text>
         </g>
       </g>
 
       <!-- Arrows -->
-      <line x1="260" y1="75"  x2="320" y2="135" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-g)"/>
-      <line x1="260" y1="290" x2="320" y2="135" stroke="#34d399" stroke-width="2"marker-end="url(#arrow-g)"/>
-      <line x1="260" y1="290" x2="700" y2="255" stroke="#34d399" stroke-width="2"marker-end="url(#arrow-g)"/>
+      <line x1="260" y1="75"  x2="320" y2="135" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-g)"/>
+      <line x1="260" y1="290" x2="320" y2="135" stroke="rgba(255,255,255,0.22)" stroke-width="2"marker-end="url(#arrow-g)"/>
+      <line x1="260" y1="290" x2="700" y2="255" stroke="rgba(255,255,255,0.22)" stroke-width="2"marker-end="url(#arrow-g)"/>
 
-      <line x1="640" y1="200" x2="720" y2="170" stroke="#63a2ff" stroke-width="2" marker-end="url(#arrow-b)"/>
-      <line x1="640" y1="200" x2="720" y2="90"  stroke="#63a2ff" stroke-width="2" marker-end="url(#arrow-b)"/>
+      <line x1="640" y1="200" x2="720" y2="170" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-b)"/>
+      <line x1="640" y1="200" x2="720" y2="90"  stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-b)"/>
 
-      <line x1="790" y1="216" x2="790" y2="232" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="810" y1="232" x2="810" y2="216" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="980" y1="216" x2="980" y2="232" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
+      <line x1="790" y1="216" x2="790" y2="232" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-p)"/>
+      <line x1="810" y1="232" x2="810" y2="216" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-p)"/>
+      <line x1="980" y1="216" x2="980" y2="232" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-p)"/>
 
-      <line x1="800" y1="383" x2="890" y2="405" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrow-p)"/>
+      <line x1="800" y1="383" x2="890" y2="405" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" marker-end="url(#arrow-p)"/>
 
-      <line x1="720" y1="432" x2="260" y2="480" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="980" y1="385" x2="980" y2="510" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4"/>
-      <line x1="980" y1="510" x2="260" y2="510" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-p)"/>
+      <line x1="720" y1="432" x2="260" y2="480" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-p)"/>
+      <line x1="980" y1="385" x2="980" y2="510" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <line x1="980" y1="510" x2="260" y2="510" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-p)"/>
       <text x="600" y="505" class="diag-sub">static TF: wrist_3_link → camera_link</text>
 
     </svg>
@@ -690,64 +690,47 @@
     <h2><span class="num">4</span> Results</h2>
   </div>
 
-  <div class="two-col">
+  <div class="two-col results-grid">
     <figure class="figure">
       <span class="ph-tag">INDIVIDUAL OBJECT MASKING</span>
-      <p>Objects are properly detected, even when stacked on top of each other as seen on the right.</p>
-      <img src="assets/scene_poses.png" alt="3D scene plot of estimated object positions." />
-    </figure>
-
-    <figure class="hero-figure carousel"aria-roledescription="carousel"aria-label="SAM2 mask debug results">
-      <div class="carousel-track">
-        <div class="carousel-slide is-active">
-          <div class="strip s1"></div>
+      <p>Each object is individually segmented, even when stacked on top of each other.</p>
+      <figure class="hero-figure carousel" aria-roledescription="carousel" aria-label="SAM2 mask debug results">
+        <div class="carousel-track">
+          <div class="carousel-slide is-active">
+            <div class="strip s1"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="strip s2"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="strip s3"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="strip s4"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="strip s5"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="strip s6"></div>
+          </div>
         </div>
-        <div class="carousel-slide">
-          <div class="strip s2"></div>
+        <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
+        <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
+        <div class="carousel-dots" role="tablist" aria-label="Carousel pagination">
+          <button class="carousel-dot is-active" role="tab" data-i="0"></button>
+          <button class="carousel-dot" role="tab" data-i="1"></button>
+          <button class="carousel-dot" role="tab" data-i="2"></button>
+          <button class="carousel-dot" role="tab" data-i="3"></button>
+          <button class="carousel-dot" role="tab" data-i="4"></button>
+          <button class="carousel-dot" role="tab" data-i="5"></button>
         </div>
-        <div class="carousel-slide">
-          <div class="strip s3"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="strip s4"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="strip s5"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="strip s6"></div>
-        </div>
-      </div>
-      <button class="carousel-btn carousel-prev"aria-label="Previous slide">‹</button>
-      <button class="carousel-btn carousel-next"aria-label="Next slide">›</button>
-      <div class="carousel-dots"role="tablist"aria-label="Carousel pagination">
-        <button class="carousel-dot is-active" role="tab" data-i="0"></button>
-        <button class="carousel-dot" role="tab" data-i="1"></button>
-        <button class="carousel-dot" role="tab" data-i="2"></button>
-        <button class="carousel-dot" role="tab" data-i="3"></button>
-        <button class="carousel-dot" role="tab" data-i="4"></button>
-        <button class="carousel-dot" role="tab" data-i="5"></button>
-      </div>
-      <!--<figcaption>SAM2 masking debug strip.</figcaption> this doesn't work as intended-->
-    </figure>
-  </div>
-
-  <div class="two-col">
-    <figure class="figure">
-        <span class="ph-tag">VIDEO DEMO</span>
-        <p>End-to-end demo run (orbit → segmentation → pick sequence).</p>
-        <iframe
-          src="https://drive.google.com/file/d/1ZvJWHgZEgT7H33ZIcDSmg-mxVdF9k3Mp/preview"
-          width="100%"
-          height="420"
-          allow="autoplay">
-        </iframe>
+      </figure>
     </figure>
 
     <figure class="figure">
-      <span class="ph-tag">FINAL PLATING</span>
+      <span class="ph-tag">FINAL PLATING — BEFORE / AFTER</span>
       <p>1st image is the original plate, 2nd image is the recreated plate.</p>
-      <!-- <img src="assets/before_and_after_plating.jpg" alt="Photo of final result with all detected objects placed on the plate." /> -->
       <figure class="hero-figure carousel plating-carousel" aria-roledescription="carousel" aria-label="Final plating comparison">
         <div class="carousel-track">
           <div class="carousel-slide is-active">
@@ -757,16 +740,32 @@
             <div class="plate-strip plate-bottom"></div>
           </div>
         </div>
-        <button class="carousel-btn carousel-prev"aria-label="Previous slide">‹</button>
-        <button class="carousel-btn carousel-next"aria-label="Next slide">›</button>
+        <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
+        <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
         <div class="carousel-dots" role="tablist" aria-label="Carousel pagination">
           <button class="carousel-dot is-active" role="tab" data-i="0"></button>
           <button class="carousel-dot" role="tab" data-i="1"></button>
         </div>
       </figure>
     </figure>
-    </div>
+  </div>
+</section>
 
+<!-- ============================================================ DEMO VIDEO -->
+<section id="demo-video" class="section section-tint demo-centered">
+  <div class="section-head">
+    <h2><span class="num">▶</span> Demo Video</h2>
+    <p class="section-sub">End-to-end demo run — orbit inspection → segmentation → pick-and-place sequence.</p>
+  </div>
+  <figure class="figure figure-wide">
+    <div class="video-frame">
+      <iframe
+        src="https://drive.google.com/file/d/1ZvJWHgZEgT7H33ZIcDSmg-mxVdF9k3Mp/preview"
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </figure>
 </section>
 
 <!-- ============================================================ STATUS -->

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(frontend-design)",
+      "Bash(npm i *)",
+      "Bash(node serve.mjs)",
+      "Bash(node screenshot.mjs http://localhost:3000 redesign)",
+      "Bash(node screenshot.mjs http://localhost:3000 full)",
+      "Bash(node -e ')",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"import\\('node:fs'\\).then\\(fs=>{const b=fs.readFileSync\\('assets/masks_debug.png'\\);console.log\\('w',b.readUInt32BE\\(16\\),'h',b.readUInt32BE\\(20\\)\\);}\\)\")"
+    ]
+  }
+}
