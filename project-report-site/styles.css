@@ -1060,6 +1060,22 @@ a:hover { color: var(--accent); }
   border: 0;
   border-radius: var(--radius-sm);
 }
+
+/* Force demo video centering (override earlier rules) */
+.demo-centered .figure-wide { display: flex !important; justify-content: center !important; }
+.demo-centered .figure-wide { padding-left: 28px; padding-right: 28px; }
+.demo-centered .figure-wide .video-frame {
+  margin: 0 auto !important;
+  max-width: 840px !important;
+  width: 100% !important;
+}
+.demo-centered .figure-wide .video-frame iframe {
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 420px !important;
+  display: block !important;
+}
 .figure figcaption,
 .figure > p {
   font-size: 13.5px;
