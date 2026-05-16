@@ -24,13 +24,13 @@
   <div class="topbar-inner">
     <a class="brand" href="#top">
       <span class="brand-mark"></span>
-      <span class="brand-text">Robot Ratatouille: Culinary Robot Project</span>
+      <span class="brand-text">Robot Ratatouille: Culinary Robot Project 🍽️</span>
     </a>
     <nav class="nav">
       <a href="#overview">Overview</a>
-      <a href="#architecture">Design</a>
+      <a href="#design">Design/Implementation</a>
       <a href="#results">Results</a>
-      <a href="#status">Status</a>
+      <a href="#conclusion">Conclusion</a>
     </nav>
   </div>
 </header>
@@ -46,7 +46,7 @@
       Culinary plating assistant made with an Intel RealSense camera paired with a UR7e Robotic Arm. Detects, scans, and memorizes plated dishes to replicate on command.
     </p>
     <div class="hero-cta">
-      <a href="#architecture" class="btn btn-primary">The design process →</a>
+      <a href="#design" class="btn btn-primary">The design process →</a>
       <a href="#results" class="btn btn-ghost">See the results</a>
     </div>
     <div class="hero-meta">
@@ -59,20 +59,20 @@
   <figure class="hero-figure carousel" aria-roledescription="carousel" aria-label="Segmentation results from the orbit inspection">
     <div class="carousel-track" id="carouselTrack">
       <div class="carousel-slide is-active">
-        <img src="assets/seg_all_1.png" alt="All-class segmentation overlay, frame 1" />
-        <figcaption><span class="kbd">01</span> All-class overlay · orbit frame 1</figcaption>
+        <img src="assets/seg_all_1.png" alt="Automatic Plate Detection" />
+        <figcaption><span class="kbd">01</span> Automatic Plate Detection</figcaption>
       </div>
       <div class="carousel-slide">
-        <img src="assets/seg_all_15.png" alt="All-class segmentation overlay, frame 15" />
-        <figcaption><span class="kbd">02</span> All-class overlay · orbit frame 15</figcaption>
+        <img src="assets/seg_all_15.png" alt="Multi-Angle Scans" />
+        <figcaption><span class="kbd">02</span> Multi-Angle Scans</figcaption>
       </div>
       <div class="carousel-slide">
-        <img src="assets/seg_all_20.png" alt="All-class segmentation overlay, frame 20" />
-        <figcaption><span class="kbd">03</span> All-class overlay · orbit frame 20</figcaption>
+        <img src="assets/seg_all_20.png" alt="Precise Masking" />
+        <figcaption><span class="kbd">03</span> Precise Masking</figcaption>
       </div>
       <div class="carousel-slide">
-        <img src="assets/seg_apple_15.png" alt="SAM2 single-instance mask of the apple" />
-        <figcaption><span class="kbd">04</span> SAM2 single-instance mask</figcaption>
+        <img src="assets/seg_apple_15.png" alt="Individual Detection" />
+        <figcaption><span class="kbd">04</span> Individual Detection</figcaption>
       </div>
     </div>
     <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
@@ -89,12 +89,9 @@
 <!-- ============================================================ OVERVIEW -->
 <section id="overview" class="section">
   <div class="section-head">
-    <h2><span class="num">1</span> System Overview</h2>
+    <h2><span class="num">1</span> Project Overview</h2>
     <p class="section-sub">
-      There are two phases. An offline inspection orbit builds a multi-view dataset of the
-      scene using MoveIt, YOLO, and SAM2; an online executor turns the resulting 6D positions into a sequence
-      of grasps. Each phase below is a brief — more technical content is in
-      the interactive architecture diagram.
+      Our project is split into two different phases: an inspection phase to scan each component on the plate, and an execution phase to begin plating food.
     </p>
   </div>
 
@@ -102,51 +99,42 @@
     <article class="phase-card">
       <h3><span class="phase-num">01</span> Inspection</h3>
       <p>
-        The arm orbits the plate in two rows of twenty waypoints, with the end-effector tool
-        permanently aimed at the centroid (except for the overhead shot). Each waypoint saves an RGB capture as a .png file and
-        the corresponding end-effector pose into an .npy file. When forty one frames are written,
-        <code>/orbit_done</code> becomes True and segmentation begins.
+        The robot arm detects the plate and proceeds to orbit around the plate twice, 
+        taking multiple photos at different angles throughout the process. The photos
+        are saved to a folder ready for segmentation.
       </p>
       <p class="phase-foot">
-        <a href="#architecture" data-open-detail="armcircler">Open ArmCircler →</a>
+        <a href="#design" data-open-detail="armcircler">More on Inspection →</a>
       </p>
     </article>
 
     <article class="phase-card">
       <h3><span class="phase-num">02</span> Execution</h3>
       <p>
-        The commander runs YOLO + SAM2 segmentation and Weighted DLT triangulation
-        to produce <code>object_poses.npy</code>, which contains the info about the estimate positions of each detected object. The user presses Enter and
-        <code>UR7e_CubeGrasp</code> executes a seven-step grasp for each object,
-        returning home between picks.
+        The photos during the inspection phase are segmented and approximate positions and
+        orientations for each object on the plate are recorded. Then, upon being presented with
+        various ingredients in view, the robot begins plating.
       </p>
       <p class="phase-foot">
-        <a href="#architecture" data-open-detail="main">Open the executor →</a>
+        <a href="#design" data-open-detail="main">More on Execution →</a>
       </p>
     </article>
   </div>
-
-  <ul class="kpi-row">
-    <li><strong>UR7e</strong><span>6-DoF arm</span></li>
-    <li><strong>YOLOv8 + SAM2</strong><span>Detection &amp; segmentation</span></li>
-    <li><strong>41 waypoints</strong><span>Orbit inspection</span></li>
-    <li><strong>Weighted DLT triangulation</strong><span>RANSAC for outlier rejection</span></li>
-  </ul>
 </section>
 
 <!-- ============================================================ ARCHITECTURE (interactive) -->
-<section id="architecture" class="section">
+<section id="design" class="section">
   <div class="section-head">
-    <h2><span class="num">2</span> Architecture</h2>
+    <h2><span class="num">2</span> Design/Implementation</h2>
     <p class="section-sub">
-      The pipeline is split across two ROS&nbsp;2 packages — <code>perception</code>
-      and <code>planning</code> — with MoveIt&nbsp;2 providing IK and motion
-      planning. <strong>Click any component below</strong> to open its details.
+      The pipeline makes use of two ROS2 packages, <code>perception</code>
+      and <code>planning</code>, with MoveIt providing IK and motion
+      planning. Click any component below to open its details.
     </p>
   </div>
 
-  <div class="diagram-wrap" aria-label="System architecture diagram. Click components for details.">
-    <svg viewBox="0 0 1100 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ROS 2 architecture for vision-guided pick and place" class="arch-svg">
+  <div class="diagram-wrap" aria-label="System design diagram. Click components for details.">
+    <svg viewBox="0 0 1100 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ROS 2 design for vision-guided pick and place" class="arch-svg">
       <defs>
         <marker id="arrow-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
           <path d="M0,0 L10,5 L0,10 z" fill="#63a2ff" />
@@ -175,24 +163,24 @@
       <!-- Hardware column -->
       <g class="arch-node" data-detail="camera" tabindex="0" role="button" aria-label="RealSense camera details">
         <rect x="20" y="30" width="240" height="100" rx="10" fill="url(#g-hw)" stroke="#34d399" stroke-opacity="0.7" />
-        <text x="140" y="62" text-anchor="middle" class="diag-title">RealSense D-series</text>
-        <text x="140" y="84" text-anchor="middle" class="diag-sub">RGB · Depth · CameraInfo</text>
-        <text x="140" y="104" text-anchor="middle" class="diag-sub">/camera/color/* · /depth/color/points</text>
+        <text x="140" y="62" text-anchor="middle" class="diag-title">RealSense Camera</text>
+        <text x="140" y="84" text-anchor="middle" class="diag-sub">Provides vision</text>
+        <text x="140" y="104" text-anchor="middle" class="diag-sub">Publishes Pointclouds</text>
       </g>
       
       <!-- YOLO model block -->
       <g class="arch-node" data-detail="yolo-model" tabindex="0" role="button" aria-label="YOLO model details">
         <rect x="20" y="240" width="240" height="100" rx="10" fill="url(#g-hw)" stroke="#34d399" stroke-opacity="0.7" />
-        <text x="140" y="272" text-anchor="middle" class="diag-title">Custom YOLO Model</text>
+        <text x="140" y="272" text-anchor="middle" class="diag-title">Custom-Trained YOLO Model</text>
         <text x="140" y="296" text-anchor="middle" class="diag-sub">Real-time object detection</text>
-        <text x="140" y="318" text-anchor="middle" class="diag-sub">Bounding box + class output</text>
+        <text x="140" y="318" text-anchor="middle" class="diag-sub">Shows bounding box + class output</text>
       </g>
 
       <g class="arch-node" data-detail="robot" tabindex="0" role="button" aria-label="UR7e arm and gripper details">
         <rect x="20" y="440" width="240" height="90" rx="10" fill="url(#g-hw)" stroke="#34d399" stroke-opacity="0.7" />
-        <text x="140" y="472" text-anchor="middle" class="diag-title">UR7e Arm + Gripper</text>
-        <text x="140" y="494" text-anchor="middle" class="diag-sub">FollowJointTrajectory</text>
-        <text x="140" y="512" text-anchor="middle" class="diag-sub">/toggle_gripper</text>
+        <text x="140" y="472" text-anchor="middle" class="diag-title">UR7e Arm</text>
+        <text x="140" y="494" text-anchor="middle" class="diag-sub">Gripper Attachment</text>
+        <text x="140" y="512" text-anchor="middle" class="diag-sub">ROS2</text>
       </g>
 
       <!-- Perception package -->
@@ -303,7 +291,7 @@
 
 <template id="tpl-yolo-model">
   <header><span class="tag tag-perc">perception</span><h3>Custom-Trained YOLO Model</h3></header>
-  <p>A custom YOLO model was trained on images of 3D-printed food replicas for real-time object detection within the workspace. Done separately from the main architecture.</p>
+  <p>A custom YOLO model was trained on images of 3D-printed food replicas for real-time object detection within the workspace. Done separately from the main design.</p>
   <ul>
     <li><strong>Dataset:</strong> Approximately 800 labeled images created using <code>Label Studio</code>.</li>
     <li><strong>Training diversity:</strong> Images were collected under varying conditions including different heights, viewing angles, lighting conditions, object distances, partial occlusions, and proximity to similarly-colored objects.</li>
@@ -415,7 +403,7 @@
     <code>busy</code> semaphore, the <code>job_queue</code>, and the full grasp
     sequence. Every arm motion is executed asynchronously through trajectory
     actions, while gripper commands are handled synchronously through service
-    calls. The node uses the same action architecture as the arm circler to fill
+    calls. The node uses the same action design as the arm circler to fill
     a queue of joint trajectories and execute them sequentially.
   </p>
 
@@ -656,18 +644,13 @@
 <!-- ============================================================ RESULTS -->
 <section id="results" class="section section-tint">
   <div class="section-head">
-    <h2><span class="num">3</span> Results &amp; Pose Reconstruction</h2>
-    <p class="section-sub">
-      Reconstructed object centroids in <code>base_link</code> from multi-view
-      triangulation, plus the SAM2 mask debug strip used to verify
-      segmentation quality before triangulation.
-    </p>
+    <h2><span class="num">3</span> Results</h2>
   </div>
 
   <div class="two-col">
     <figure class="figure">
-      <span class="ph-tag">IMAGE</span>
-      <p>Reconstructed object centroids in <code>base_link</code>.</p>
+      <span class="ph-tag">INDIVIDUAL OBJECT MASKING</span>
+      <p>Objects are properly detected, even when stacked on top of each other as seen on the right.</p>
       <img src="assets/scene_poses.png" alt="3D scene plot of estimated object positions." />
     </figure>
 
@@ -721,60 +704,61 @@
 
     <figure class="figure">
       <span class="ph-tag">IMAGE</span>
-      <img src="assets/" alt="Photo of final result with all detected objects placed on the plate." />
+      <img src="assets/final_plating.jpg" alt="Photo of final result with all detected objects placed on the plate." />
     </figure>
     </div>
 
 </section>
 
 <!-- ============================================================ STATUS -->
-<section id="status" class="section">
+<section id="conclusion" class="section">
   <div class="section-head">
-    <h2><span class="num">4</span> Status &amp; What's Next</h2>
+    <h2><span class="num">4</span> Conclusion</h2>
     <p class="section-sub">
-      Perception and orbit inspection are stable, the offline 6D pipeline runs
-      end-to-end, and pick execution works on rigid objects. Placement on the
-      plate is the next milestone.
+      Overall, the project was successful in accordance to our original proposal. With our computer vision and placement for rigid objects 
+      working, we firmly believe our project can continue to evolve for even more complex culinary situations.
     </p>
   </div>
 
-  <div class="status-grid">
-    <div class="status-card good">
+  <div class="conclusion-grid">
+    <div class="conclusion-card good">
       <h3>Working</h3>
       <ul>
-        <li>Live YOLOv8 detection + plate-radius exclusion</li>
-        <li>41-waypoint orbit with synchronized pose logging</li>
-        <li>SAM2 batch segmentation across all captures</li>
-        <li>Multi-view RANSAC triangulation in <code>base_link</code></li>
-        <li>Async MoveIt-planned pick sequence with refinement</li>
+        <li>Circular arm movement for scanning</li>
+        <li>Live YOLO bounding boxes + object classification</li>
+        <li>SAM2 batch segmentation to estimate poses</li>
+        <li>RANSAC triangulation</code></li>
+        <li>Automated pick and place, including stacked ingredients</li>
       </ul>
     </div>
 
-    <div class="status-card todo">
-      <h3>In progress</h3>
+    <div class="conclusion-card todo">
+      <h3>Future Improvements</h3>
       <ul>
-        <li>Wire <code>position_base_link_m</code> into <code>main.py</code>.</li>
-        <li>Per-object drop spots around the plate centroid.</li>
-        <li>Pick ordering by distance / class priority.</li>
+        <li>A more organized GitHub repository and file directory. 4+ hours spent debugging related issues</li>
+        <li>Custom gripper to allow for larger objects and to not crush soft objects</li>
+        <li>Allow operation with any UR7e robotic arm without requiring hard-coded offsets</li>
+        <li>Utilizing real food objects (thus allowing usage of existing comprehensive YOLO models)</li>
       </ul>
     </div>
 
-    <div class="status-card risk">
-      <h3>Known issues</h3>
+    <div class="conclusion-card risk">
+      <h3>Difficulties</h3>
       <ul>
-        <li>Drop-waypoint IK failures not yet checked before enqueue.</li>
-        <li>Gripper state silently drifts if it starts closed.</li>
-        <li>Refined detection waits indefinitely if the object disappears.</li>
-        <li><code>colcon build</code> copies (not symlinks) Python files.</li>
+        <li>RealSense camera quality downgraded to 680x480p: using higher resolution (as done in lab originally) results in errors</li>
+        <li>Lack of consistency → loss of time. Project is typically consistent for one UR7e arm at a time due to hard-coded offsets</li>
+        <li>YOLO model training takes quite a lot of time, required many hours of training and almost 1000 labeled images for accurate performance</li>
       </ul>
     </div>
+
+    
   </div>
 </section>
 
 <!-- ============================================================ AI Disclosure -->
 <section id="disclosure" class="section">
   <div class="section-head">
-    <h2><span class="num">6</span> AI Use Disclosure</h2>
+    <h2><span class="num">5</span> AI Use Disclosure</h2>
     <p class="section-sub">Throughout the project creation process, ChatGPT, Gemini, and Claude Code were used in supporting roles for debugging, 
       code integration, logic design, and website development.
     </p>
@@ -814,7 +798,7 @@
   <div class="footer-inner">
     <div>
       <strong>ME C106A · Vision-Guided Pick and Place</strong>
-      <p>UC Berkeley · Spring 2026 · Authors: Nathaniel Chan &comma; Nathan Lam &comma; Christopher-Michael Garcia &comma; Alan Tran &comma; &amp; William Ou</p>
+      <p>UC Berkeley · Spring 2026 · Authors: Nathaniel Chan&comma; Nathan Lam&comma; Christopher-Michael Garcia&comma; Alan Tran&comma; and William Ou</p>
       <p>Link to repository: <a href="https://github.com/nchaniel/106aProject">https://github.com/nchaniel/106aProject</a></p>
     </div>
     <div class="footer-links">
