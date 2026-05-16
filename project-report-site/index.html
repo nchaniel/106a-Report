@@ -297,9 +297,9 @@
       <header><span class="tag tag-hw">Hardware</span><h3>Intel RealSense D-series</h3></header>
       <p>Wrist-mounted depth camera providing aligned RGB, depth, and intrinsics over the standard RealSense ROS 2 topics.</p>
       <ul>
-        <li><code>/camera/.../color/image_raw</code> — RGB stream consumed by YOLO.</li>
-        <li><code>/camera/.../depth/color/points</code> — pointcloud reprojected into image coords for centroid lift.</li>
-        <li><code>/camera/.../color/camera_info</code> — intrinsics used by <code>pixel_to_world</code>.</li>
+        <li><code>/camera/.../color/image_raw</code> — RGB stream used by YOLO to determine bounding boxes and centroids.</li>
+        <li><code>/camera/.../depth/color/points</code> — This is the pointcloud used detection_node to find the centroid and depths of objects detected with YOLO.</li>
+        <li><code>/camera/.../color/camera_info</code> — intrinsics used by <code>pixel_to_world</code> to calculate the position of objects based on where they appear on the image plane (camera).</li>
       </ul>
       <p class="callout-inline"><strong>Note —</strong> the camera launch is intentionally external to the bringup so we can restart it without tearing down the planner.</p>
     </template>
@@ -322,9 +322,8 @@
       <header><span class="tag tag-hw">Hardware</span><h3>UR7e Arm + Gripper</h3></header>
       <p>6-DoF Universal Robots UR7e with a parallel gripper. The arm is driven through the <code>scaled_joint_trajectory_controller</code>'s FollowJointTrajectory action.</p>
       <ul>
-        <li><strong>Home pose:</strong> <code>[4.723, -1.576, -2.161, -0.993, 1.580, -3.143]</code> rad.</li>
-        <li><strong>Gripper toggle:</strong> <code>/toggle_gripper</code> Trigger service. State assumed open at startup.</li>
-        <li><strong>Joint feedback:</strong> <code>/joint_states</code> seeds every IK call so the solver starts from the live configuration.</li>
+        <li><strong>Gripper toggle:</strong> <code>/toggle_gripper</code> Triggers the gripper to open and close. It’s assumed to be open at the startup.</li>
+        <li><strong>Joint feedback:</strong> <code>/joint_states</code> /joint_states is the topic that contains the current joint states in radians. It’s used in the IK solver, armcircler, and the pick and place.</li>
       </ul>
     </template>
 
@@ -630,18 +629,17 @@
 
     <template id="tpl-ik">
       <header><span class="tag tag-plan">planning</span><h3>IKPlanner</h3></header>
-      <p>Wraps the two MoveIt services we actually need.</p>
+      <p>Wraps the two MoveIt services we actually need: GetPositionIK and GetMotionPlan. GetPositionIK is a MoveIt service that computes the inverse kinematics for a specific point in 3D space, and GetMotionPlan makes sure that this trajectory is safe.</p>
       <ul>
-        <li><code>/compute_ik</code> — Cartesian target → joint solution. Seeded with the previous step's joints, not the live arm pose, to keep the solver in a locally consistent region.</li>
-        <li><code>/plan_kinematic_path</code> — RRTConnect plan between joint configurations.</li>
-        <li><strong>Default orientation</strong> is <code>qy = 1</code> (gripper straight down).</li>
+        <li><code>/compute_ik</code> —  Cartesian target → joint solution. Input is the current joint states and the desired position and rotation as a quaternion. The position and rotation pertain to the end effector frame “tool0”.</li>
+        <li><code>/plan_kinematic_path</code> — uses Rapidly-exploring Random Tree (RRT) to find a joint trajectory that is feasible and avoid collisions.</li>
       </ul>
     </template>
 
     <template id="tpl-tf">
       <header><span class="tag tag-plan">planning</span><h3>static_tf_transform</h3></header>
-      <p>Broadcasts the constant <code>wrist_3_link → camera_link</code> transform as a hard-coded 4×4 matrix <code>G</code>.</p>
-      <p>This is the bridge between the depth point cloud and the kinematic chain. Without it, YOLO can locate objects in the camera frame but the arm has no way to plan to them.</p>
+      <p>Broadcasts the constant <code>wrist_3_link → camera_link</code> transform as a homogenous transformation 4×4 matrix <code>G</code>.</p>
+      <p>This is the bridge between the realsense camera and the ur7e robot. It allows the robot arm to plan waypoints with the camera’s position in mind (i.e. armcircler).</p>
     </template>
 
     <template id="tpl-moveit">
