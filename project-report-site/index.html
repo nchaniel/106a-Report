@@ -398,14 +398,13 @@
 
     <template id="tpl-commander">
       <header><span class="tag tag-plan">planning</span><h3>Commander &amp; Offline 6D pipeline</h3></header>
-      <p>Runs in a separate terminal so stdin works. On <code>/orbit_done</code> it kicks off two subprocesses through the sam2 venv, then prompts the user.</p>
+      <p>Runs in a separate terminal so the user can still enter inputs without interrupting the code. On <code>/orbit_done</code> it runs the segmentation node, then the pose reconstruction node, and then sends the estimated positions of the foods to the pick and place node to plate the dish.</p>
       <ol class="steps-inline">
-        <li><strong>segment_batch.py</strong> — YOLO + SAM2 over all captured frames → <code>segmented/&lt;stem&gt;/&lt;stem&gt;_&lt;class&gt;_&lt;i&gt;_mask.png</code>.</li>
-        <li><strong>6D_poses/run.py</strong> — per-view centroid (mask area → apparent-size depth), then <code>triangulate_ransac</code> + weighted DLT across views.</li>
-        <li><strong>Output:</strong> <code>results/object_poses.npy</code> with one <code>position_base_link_m</code> per object.</li>
-        <li><strong>Activation:</strong> Enter → <code>/start_pick_place</code> (Bool). Subsequent inputs → <code>/set_target_class</code> (String).</li>
+        <li><strong>segment_batch.py</strong> — The commander node tells this node to run after the armcircler node is done. This node is responsible for detecting the foods in each image using YOLO and SAM2. It takes in the images folder and outputs a folder of images called “segmented” with the YOLO bounding boxes and SAM2 masks. → <code>segmented/&lt;stem&gt;/&lt;stem&gt;_&lt;class&gt;_&lt;i&gt;_mask.png</code>.</li>
+        <li><strong>Output:</strong> The commander node receives <code>results/object_poses.npy</code> with one <code>position_base_link_m</code> per object from the 6D pose node. The commander node then loads those positions and filters out the ones that aren’t confident enough.</li>
+        <li><strong>Activation:</strong> Pressing Enter sends a "True" message under the topic <code>/start_pick_place</code> to the pick and place node, which tells it to begin pick and place. The commander node sorts the list of objects and postions based on the z height and sends them to the pick and place node under the topic <code>/planned_pick_tasks</code>, where the placement begins.</li>
       </ol>
-      <p><strong>Position-only mode:</strong> depth is estimated from apparent mask radius (<code>z = f<sub>x</sub> · (d/2) / r<sub>px</sub></code>) — no DINOv2, no STL rendering. Fast and CAD-free.</p>
+      <p><strong>Position-only mode:</strong> depth is estimated from apparent mask radius (<code>z = f<sub>x</sub> · (d/2) / r<sub>px</sub></code>)</p>
     </template>
 
 <template id="tpl-main">
