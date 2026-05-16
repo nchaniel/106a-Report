@@ -226,7 +226,7 @@
 
       <!-- Planning package -->
       <g>
-        <rect x="700" y="20" width="380" height="430" rx="12" fill="url(#g-planning)" stroke="#c084fc" stroke-opacity="0.7" />
+        <rect x="700" y="20" width="380" height="460" rx="12" fill="url(#g-planning)" stroke="#c084fc" stroke-opacity="0.7" />
         <text x="890" y="46" text-anchor="middle" class="diag-pkg">planning</text>
 
         <g class="arch-node" data-detail="armcircler" tabindex="0" role="button" aria-label="ArmCircler details">
@@ -242,27 +242,34 @@
           <text x="890" y="198" text-anchor="middle" class="diag-sub">/start_pick_place · /set_target_class</text>
         </g>
 
+        <g class="arch-node" data-detail="poses" tabindex="0" role="button" aria-label="6D Poses details">
+          <rect x="720" y="232" width="160" height="78" rx="8" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <text x="800" y="254" text-anchor="middle" class="diag-title">6D Poses</text>
+          <text x="800" y="274" text-anchor="middle" class="diag-sub">run.py → triangulation</text>
+          <text x="800" y="292" text-anchor="middle" class="diag-sub">results/object_poses.npy</text>
+        </g>
+
         <g class="arch-node" data-detail="main" tabindex="0" role="button" aria-label="UR7e_CubeGrasp details">
-          <rect x="720" y="232" width="340" height="86" rx="8" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
-          <text x="890" y="254" text-anchor="middle" class="diag-title">UR7e_CubeGrasp (main.py)</text>
-          <text x="890" y="274" text-anchor="middle" class="diag-sub">busy semaphore · job queue</text>
-          <text x="890" y="292" text-anchor="middle" class="diag-sub">hover → descend → grip → lift → drop</text>
-          <text x="890" y="310" text-anchor="middle" class="diag-sub">PICK_OFFSETS per class</text>
+          <rect x="900" y="232" width="160" height="86" rx="8" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <text x="980" y="254" text-anchor="middle" class="diag-title">UR7e_CubeGrasp</text>
+          <text x="980" y="274" text-anchor="middle" class="diag-sub">busy semaphore · job queue</text>
+          <text x="980" y="292" text-anchor="middle" class="diag-sub">hover → descend → grip → lift</text>
+          <text x="980" y="310" text-anchor="middle" class="diag-sub">PICK_OFFSETS per class</text>
         </g>
 
         <g class="arch-node" data-detail="ik" tabindex="0" role="button" aria-label="IKPlanner details">
-          <rect x="720" y="332" width="160" height="46" rx="6" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
-          <text x="800" y="358" text-anchor="middle" class="diag-sub">IKPlanner</text>
+          <rect x="720" y="336" width="160" height="46" rx="6" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <text x="800" y="362" text-anchor="middle" class="diag-sub">IKPlanner</text>
         </g>
 
         <g class="arch-node" data-detail="tf" tabindex="0" role="button" aria-label="static_tf_transform details">
-          <rect x="900" y="332" width="160" height="46" rx="6" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
-          <text x="980" y="358" text-anchor="middle" class="diag-sub">static_tf_transform</text>
+          <rect x="900" y="336" width="160" height="46" rx="6" fill="rgba(15, 22, 36, 0.6)" stroke="#c084fc"/>
+          <text x="980" y="362" text-anchor="middle" class="diag-sub">static_tf_transform</text>
         </g>
 
         <g class="arch-node" data-detail="moveit" tabindex="0" role="button" aria-label="MoveIt 2 details">
-          <rect x="720" y="390" width="340" height="46" rx="8" fill="rgba(196, 132, 252, 0.08)" stroke="rgba(196, 132, 252, 0.4)"/>
-          <text x="890" y="416" text-anchor="middle" class="diag-sub">MoveIt 2 · /compute_ik · /plan_kinematic_path</text>
+          <rect x="720" y="404" width="340" height="46" rx="8" fill="rgba(196, 132, 252, 0.08)" stroke="rgba(196, 132, 252, 0.4)"/>
+          <text x="890" y="430" text-anchor="middle" class="diag-sub">MoveIt 2 · /compute_ik · /plan_kinematic_path</text>
         </g>
       </g>
 
@@ -274,12 +281,15 @@
       <line x1="640" y1="191" x2="720" y2="170" stroke="#63a2ff" stroke-width="2" marker-end="url(#arrow-b)"/>
       <line x1="640" y1="200" x2="720" y2="90"  stroke="#63a2ff" stroke-width="2" marker-end="url(#arrow-b)"/>
 
-      <line x1="720" y1="412" x2="260" y2="478" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="890" y1="216" x2="890" y2="232" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="800" y1="378" x2="890" y2="390" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrow-p)"/>
+      <line x1="790" y1="216" x2="790" y2="232" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
+      <line x1="810" y1="232" x2="810" y2="216" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
+      <line x1="980" y1="216" x2="980" y2="232" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
 
-      <line x1="980" y1="378" x2="980" y2="500" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4"/>
-      <line x1="980" y1="500" x2="260" y2="500" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-d)"/>
+      <line x1="800" y1="383" x2="890" y2="405" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrow-p)"/>
+
+      <line x1="720" y1="432" x2="260" y2="480" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
+      <line x1="980" y1="385" x2="980" y2="520" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <line x1="980" y1="520" x2="260" y2="520" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-p)"/>
       <text x="600" y="495" class="diag-sub">static TF: wrist_3_link → camera_link</text>
 
     </svg>
@@ -383,11 +393,11 @@
         <figure><img src="assets/captured_15.jpg" alt="Orbit frame 15"><figcaption>Frame 15</figcaption></figure>
         <figure><img src="assets/captured_30.jpg" alt="Orbit frame 30"><figcaption>Frame 30</figcaption></figure>
       </div>
-      <p class="callout-inline"><strong>Why orbit?</strong> Single-frame depth centroids degrade near the edge of the camera frame. Forty views give the offline pipeline enough parallax for stable triangulation.</p>
+      <p class="callout-inline"><strong>Why orbit?</strong> Single-frame depth centroids degrade near the edge of the camera frame. Forty one views give the offline pipeline enough parallax for stable triangulation.</p>
     </template>
 
     <template id="tpl-commander">
-      <header><span class="tag tag-plan">planning</span><h3>Commander &amp; offline 6D pipeline</h3></header>
+      <header><span class="tag tag-plan">planning</span><h3>Commander &amp; Offline 6D pipeline</h3></header>
       <p>Runs in a separate terminal so stdin works. On <code>/orbit_done</code> it kicks off two subprocesses through the sam2 venv, then prompts the user.</p>
       <ol class="steps-inline">
         <li><strong>segment_batch.py</strong> — YOLO + SAM2 over all captured frames → <code>segmented/&lt;stem&gt;/&lt;stem&gt;_&lt;class&gt;_&lt;i&gt;_mask.png</code>.</li>
@@ -816,7 +826,7 @@
       were manually created and curated.
     </p>
 
-    <h3>Note</h3>
+    <h3>Additional Note</h3>
     <p>The Lab 5 starter code was used as the baseline for portions of this project.</p>
 
   </div>
@@ -826,7 +836,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <strong>ME C106A · Vision-Guided Pick and Place</strong>
+      <strong>ME C106A · Robot Ratatouille: Culinary Robot</strong>
       <p>UC Berkeley · Spring 2026 · Authors: Nathaniel Chan&comma; Nathan Lam&comma; Christopher-Michael Garcia&comma; Alan Tran&comma; and William Ou</p>
       <p>Link to repository: <a href="https://github.com/nchaniel/106aProject">https://github.com/nchaniel/106aProject</a></p>
     </div>
