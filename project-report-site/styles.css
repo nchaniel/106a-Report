@@ -478,6 +478,31 @@ a:hover { color: #93a7ff; }
   outline-offset: 3px;
 }
 
+/* Plating carousel slide content */
+.plate-strip {
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/before_and_after_plating.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.plate-top {
+  background-position: center 0%;
+}
+.plate-bottom {
+  background-position: center 100%;
+}
+
+/* Match 2nd carousel styling for plating carousel */
+.plating-carousel .carousel-track {
+  aspect-ratio: 1 / 1.3;
+}
+
+/* Match plating carousel styling for SAM2 strip carousel */
+.carousel:has(.strip) .carousel-track {
+  aspect-ratio: 1 / 0.25;
+}
+
 /* ===========================================================
    Section scaffolding
    =========================================================== */
@@ -529,6 +554,13 @@ a:hover { color: #93a7ff; }
   font-size: 16.5px;
   color: var(--ink-soft);
   max-width: 78ch;
+  margin: 0;
+  line-height: 1.65;
+  font-weight: 300;
+}
+.section-desc {
+  font-size: 16.5px;
+  color: var(--ink-soft);
   margin: 0;
   line-height: 1.65;
   font-weight: 300;
@@ -1135,7 +1167,15 @@ a:hover { color: #93a7ff; }
 .s6 { background-position:  83.33% 0; }
 .s7 { background-position: 100% 0; }
 
+/* top half */
+.p1 {
+  background-position: center top;
+}
 
+/* bottom half */
+.p2 {
+  background-position: center bottom;
+}
 
 /* ===========================================================
    Responsive

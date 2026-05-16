@@ -86,10 +86,25 @@
   </figure>
 </section>
 
-<!-- ============================================================ OVERVIEW -->
+<!-- ============================================================ Project Background -->
+<section id="background" class="section">
+<div class="section-head">
+    <h2><span class="num">1</span> Project Background</h2>
+    <p class="section-desc">
+      What if a robot could plate a dish as well as a human? Robotic culinary plating requires accurate perception,
+      spatial reasoning, and delicate manipulation. This project presents a robotic culinary plating assistant that uses a
+      UR7e arm with an attached camera to capture a completed dish from multiple viewpoints and reconstruct
+      a 3D model of the plated arrangement. The system identifies food items, estimates their
+      poses relative to varying frames, and generates a pick-and-place plan to recreate the dish. Such a robot would be able to 
+      quickly, accurately, and consistently recreate dishes, allowing for shorter waiting times at restaurants.
+    </p>
+  </div>
+</section>  
+
+<!-- ============================================================ PROJECT OVERVIEW -->
 <section id="overview" class="section">
   <div class="section-head">
-    <h2><span class="num">1</span> Project Overview</h2>
+    <h2><span class="num">2</span> Project Overview</h2>
     <p class="section-sub">
       Our project is split into two different phases: an inspection phase to scan each component on the plate, and an execution phase to begin plating food.
     </p>
@@ -125,7 +140,7 @@
 <!-- ============================================================ ARCHITECTURE (interactive) -->
 <section id="design" class="section">
   <div class="section-head">
-    <h2><span class="num">2</span> Design/Implementation</h2>
+    <h2><span class="num">3</span> Design/Implementation</h2>
     <p class="section-sub">
       The pipeline makes use of two ROS2 packages, <code>perception</code>
       and <code>planning</code>, with MoveIt providing IK and motion
@@ -644,7 +659,7 @@
 <!-- ============================================================ RESULTS -->
 <section id="results" class="section section-tint">
   <div class="section-head">
-    <h2><span class="num">3</span> Results</h2>
+    <h2><span class="num">4</span> Results</h2>
   </div>
 
   <div class="two-col">
@@ -675,10 +690,8 @@
           <div class="strip s6"></div>
         </div>
       </div>
-
       <button class="carousel-btn carousel-prev"aria-label="Previous slide">‹</button>
       <button class="carousel-btn carousel-next"aria-label="Next slide">›</button>
-
       <div class="carousel-dots"role="tablist"aria-label="Carousel pagination">
         <button class="carousel-dot is-active" role="tab" data-i="0"></button>
         <button class="carousel-dot" role="tab" data-i="1"></button>
@@ -690,6 +703,7 @@
       <!--<figcaption>SAM2 masking debug strip.</figcaption> this doesn't work as intended-->
     </figure>
   </div>
+
   <div class="two-col">
     <figure class="figure">
         <span class="ph-tag">VIDEO DEMO</span>
@@ -704,7 +718,24 @@
 
     <figure class="figure">
       <span class="ph-tag">FINAL PLATING</span>
-      <img src="assets/before_and_after_plating.jpg" alt="Photo of final result with all detected objects placed on the plate." />
+      <p>1st image is the original plate, 2nd image is the recreated plate.</p>
+      <!-- <img src="assets/before_and_after_plating.jpg" alt="Photo of final result with all detected objects placed on the plate." /> -->
+      <figure class="hero-figure carousel plating-carousel" aria-roledescription="carousel" aria-label="Final plating comparison">
+        <div class="carousel-track">
+          <div class="carousel-slide is-active">
+            <div class="plate-strip plate-top"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="plate-strip plate-bottom"></div>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-prev"aria-label="Previous slide">‹</button>
+        <button class="carousel-btn carousel-next"aria-label="Next slide">›</button>
+        <div class="carousel-dots" role="tablist" aria-label="Carousel pagination">
+          <button class="carousel-dot is-active" role="tab" data-i="0"></button>
+          <button class="carousel-dot" role="tab" data-i="1"></button>
+        </div>
+      </figure>
     </figure>
     </div>
 
@@ -713,10 +744,12 @@
 <!-- ============================================================ STATUS -->
 <section id="conclusion" class="section">
   <div class="section-head">
-    <h2><span class="num">4</span> Conclusion</h2>
+    <h2><span class="num">5</span> Conclusion</h2>
     <p class="section-sub">
       Overall, the project was successful in accordance to our original proposal. With our computer vision and placement for rigid objects 
       working, we firmly believe our project can continue to evolve for even more complex culinary situations.
+      While the video demonstration was long in duration, in practical use, the robot will only need to scan a dish once. After that, the robot can
+      recreate that dish as many times as necessary.
     </p>
   </div>
 
@@ -756,7 +789,7 @@
 <!-- ============================================================ AI Disclosure -->
 <section id="disclosure" class="section">
   <div class="section-head">
-    <h2><span class="num">5</span> AI Use Disclosure</h2>
+    <h2><span class="num">6</span> AI Use Disclosure</h2>
     <p class="section-sub">Throughout the project creation process, ChatGPT, Gemini, and Claude Code were used in supporting roles for debugging, 
       code integration, logic design, and website development.
     </p>
