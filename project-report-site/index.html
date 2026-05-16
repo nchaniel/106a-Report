@@ -274,11 +274,11 @@
       </g>
 
       <!-- Arrows -->
-      <line x1="260" y1="75"  x2="320" y2="85"  stroke="#34d399" stroke-width="2" marker-end="url(#arrow-g)"/>
-      <line x1="260" y1="285" x2="320" y2="140"stroke="#34d399" stroke-width="2"marker-end="url(#arrow-g)"/>
-      <line x1="260" y1="295" x2="700" y2="255"stroke="#34d399" stroke-width="2"marker-end="url(#arrow-g)"/>
+      <line x1="260" y1="75"  x2="320" y2="135" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-g)"/>
+      <line x1="260" y1="290" x2="320" y2="135" stroke="#34d399" stroke-width="2"marker-end="url(#arrow-g)"/>
+      <line x1="260" y1="290" x2="700" y2="255" stroke="#34d399" stroke-width="2"marker-end="url(#arrow-g)"/>
 
-      <line x1="640" y1="191" x2="720" y2="170" stroke="#63a2ff" stroke-width="2" marker-end="url(#arrow-b)"/>
+      <line x1="640" y1="200" x2="720" y2="170" stroke="#63a2ff" stroke-width="2" marker-end="url(#arrow-b)"/>
       <line x1="640" y1="200" x2="720" y2="90"  stroke="#63a2ff" stroke-width="2" marker-end="url(#arrow-b)"/>
 
       <line x1="790" y1="216" x2="790" y2="232" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
@@ -288,9 +288,9 @@
       <line x1="800" y1="383" x2="890" y2="405" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrow-p)"/>
 
       <line x1="720" y1="432" x2="260" y2="480" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="980" y1="385" x2="980" y2="520" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4"/>
-      <line x1="980" y1="520" x2="260" y2="520" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-p)"/>
-      <text x="600" y="495" class="diag-sub">static TF: wrist_3_link → camera_link</text>
+      <line x1="980" y1="385" x2="980" y2="510" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <line x1="980" y1="510" x2="260" y2="510" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-p)"/>
+      <text x="600" y="505" class="diag-sub">static TF: wrist_3_link → camera_link</text>
 
     </svg>
     <!-- <p class="diagram-hint">Tip: every block is clickable.</p> We don't need this, no point.-->
@@ -405,6 +405,27 @@
         <li><strong>Activation:</strong> Pressing Enter sends a "True" message under the topic <code>/start_pick_place</code> to the pick and place node, which tells it to begin pick and place. The commander node sorts the list of objects and postions based on the z height and sends them to the pick and place node under the topic <code>/planned_pick_tasks</code>, where the placement begins.</li>
       </ol>
       <p><strong>Position-only mode:</strong> depth is estimated from apparent mask radius (<code>z = f<sub>x</sub> · (d/2) / r<sub>px</sub></code>)</p>
+    </template>
+
+    <template id="tpl-poses">
+      <header><span class="tag tag-plan">planning</span><h3>6D Poses — Position & Orientation Reconstruction</h3></header>
+      <p>Given a set of images of the scene, corresponding masks for each object, CAD files describing each object, and transformation matrices for each camera angle, the Poses Node returns the position and optionally orientation of each object in the scene relative to the base link.</p>
+      
+      <h4>Position-Only Solving</h4>
+      <p>When only solving for position, the node implements a Weighted DLT triangulation algorithm with RANSAC for outlier rejection.</p>
+      <ol class="steps-inline">
+        <li>Using the x,y coordinates of each object in an image, derive the line upon which each object's centroid lies.</li>
+        <li>Estimate the object's depth using estimations of the object's size in the image based on the CAD files.</li>
+        <li>Apply a RANSAC algorithm to remove outliers and find a coordinate for the center of each object which most images agree upon.</li>
+      </ol>
+
+      <h4>Position + Orientation Solving</h4>
+      <p>When also solving for orientation, the node implements DINOv2 ViT-S/14 feature matching, iterative render-and-compare using Chamfer edge distance, and RANSAC for outlier removal.</p>
+      <ol class="steps-inline">
+        <li>Given an object mask, image and CAD file, estimate an initial position and orientation.</li>
+        <li>Tune the guess by shifting the orientation and depth iteratively, comparing a render using the existing CAD files against the mask.</li>
+        <li>Apply a RANSAC algorithm to remove outliers.</li>
+      </ol>
     </template>
 
 <template id="tpl-main">
