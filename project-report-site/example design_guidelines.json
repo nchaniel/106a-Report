@@ -1,0 +1,121 @@
+{
+  "name": "Monochrome Studio — Refined Dark Portfolio System",
+  "description": "A minimal, high-contrast dark design system inspired by premium fractional-designer portfolios. Pure-black canvas, soft charcoal cards, oversized neo-grotesque display type, and quiet gray supporting text. The personality is calm, confident, and editorial — luxury through restraint, not decoration.",
+  "mood": ["minimal", "editorial", "premium", "calm", "high-contrast", "spacious"],
+
+  "color": {
+    "background": {
+      "page": "#000000",
+      "elevated": "#161616",
+      "elevatedHover": "#1d1d1d",
+      "card": "#171717",
+      "cardGlowTop": "rgba(255,255,255,0.05)"
+    },
+    "text": {
+      "primary": "#f5f5f5",
+      "secondary": "#a0a0a0",
+      "tertiary": "#6e6e6e",
+      "quaternary": "#4a4a4a",
+      "onCardQuote": "#ededed"
+    },
+    "line": {
+      "subtle": "rgba(255,255,255,0.08)",
+      "pill": "rgba(255,255,255,0.16)",
+      "pillStrong": "rgba(255,255,255,0.24)"
+    },
+    "accent": {
+      "note": "Color is used almost exclusively inside product imagery (warm reds, soft purples, mint greens). The UI chrome itself stays strictly monochrome.",
+      "productRed": "#c4584f",
+      "productPurple": "#6c63d8",
+      "productMint": "#3aa088"
+    }
+  },
+
+  "typography": {
+    "fontStack": {
+      "display": "'Geist', 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, sans-serif",
+      "body": "'Geist', 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, sans-serif",
+      "mono": "'SFMono-Regular', 'SF Mono', ui-monospace, 'Menlo', monospace",
+      "webfont": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap",
+      "note": "Geist — a modern, neutral neo-grotesque (close to Söhne/Helvetica) that reads cleaner and more contemporary than Arial. The SIZE and tight tracking carry the personality. Numbers (01–06) feel near-monospace and muted."
+    },
+    "scale": {
+      "displayHero": { "size": "clamp(3.5rem, 11vw, 9.5rem)", "weight": 500, "lineHeight": 0.94, "letterSpacing": "-0.035em" },
+      "displayProject": { "size": "clamp(4rem, 16vw, 13rem)", "weight": 600, "lineHeight": 0.9, "letterSpacing": "-0.04em" },
+      "sectionLabel": { "size": "clamp(1.5rem, 2.4vw, 2rem)", "weight": 500, "lineHeight": 1.1, "letterSpacing": "-0.02em" },
+      "quote": { "size": "clamp(1.25rem, 1.7vw, 1.6rem)", "weight": 400, "lineHeight": 1.32, "letterSpacing": "-0.015em" },
+      "pill": { "size": "clamp(1.1rem, 1.5vw, 1.45rem)", "weight": 400, "lineHeight": 1, "letterSpacing": "-0.01em" },
+      "cardTitle": { "size": "1.5rem", "weight": 500, "lineHeight": 1.1, "letterSpacing": "-0.015em" },
+      "cardSubtitle": { "size": "1.05rem", "weight": 400, "lineHeight": 1.3 },
+      "body": { "size": "1.0rem", "weight": 400, "lineHeight": 1.45 },
+      "approachLead": { "size": "1.0rem", "weight": 600, "lineHeight": 1.5 },
+      "metaLabel": { "size": "0.8rem", "weight": 400, "lineHeight": 1, "letterSpacing": "0.08em", "transform": "uppercase" },
+      "indexNumber": { "size": "0.8rem", "weight": 400, "letterSpacing": "0.02em" },
+      "navName": { "size": "1.05rem", "weight": 400, "letterSpacing": "-0.01em" }
+    }
+  },
+
+  "spacing": {
+    "pagePaddingX": "clamp(1.5rem, 4vw, 2.75rem)",
+    "sectionGap": "clamp(7rem, 14vh, 11rem)",
+    "labelToContent": "clamp(2.5rem, 5vh, 4rem)",
+    "gridGap": "1.25rem",
+    "rhythm": "Very generous vertical whitespace between sections. Content breathes. Section labels sit far above their content."
+  },
+
+  "shape": {
+    "cardRadius": "20px",
+    "cardRadiusLarge": "28px",
+    "pillRadius": "999px",
+    "buttonCircle": "999px",
+    "borderWidth": "1px"
+  },
+
+  "components": {
+    "nav": {
+      "layout": "Fixed/space-between. Name on the left, single circular outline button (hamburger / =) on the right.",
+      "circleButton": "36px circle, 1px subtle border, transparent fill, centered glyph in tertiary gray."
+    },
+    "projectCard": {
+      "shape": "Near-square, radius 20px, background #171717.",
+      "content": "Centered floating product render (soft drop shadow), then title + gray subtitle anchored bottom-left.",
+      "layout": "Horizontal scroll row, ~5 cards visible, last one bleeds off the right edge.",
+      "hover": "Background lifts to #1d1d1d; render scales 1.03 and shadow deepens. ~400ms ease."
+    },
+    "pill": {
+      "shape": "Fully rounded, 1px border rgba(255,255,255,0.16), transparent fill with faint top-light inner gradient.",
+      "padding": "0.7em 1.3em",
+      "hover": "Border brightens to 0.24, subtle fill rgba(255,255,255,0.04)."
+    },
+    "approachItem": {
+      "layout": "3-column grid. Each item: muted number (01) + paragraph with bold white lead sentence followed by secondary-gray detail."
+    },
+    "logoRow": {
+      "style": "Single row of client wordmarks at ~35% opacity (tertiary gray), evenly spaced, last bleeds off edge.",
+      "hover": "Optional fade to full opacity."
+    },
+    "testimonialCard": {
+      "shape": "Tall rounded card (radius 24px), background #171717 with a soft radial highlight at top-center (cardGlowTop) fading to flat.",
+      "content": "Large quote in onCardQuote, then footer row: client wordmark (tertiary) left, circular avatar right.",
+      "layout": "Horizontal row, 3 visible, third bleeds off the right edge."
+    },
+    "metaBlock": {
+      "layout": "Two-column rows: uppercase tracked label (tertiary) left, value right. Used for TEAM (avatar stack), SERVICES (pills), DATE."
+    }
+  },
+
+  "motion": {
+    "principles": "Slow, soft, premium. Nothing bouncy. 350–500ms cubic-bezier(0.22,1,0.36,1).",
+    "pageLoad": "Staggered upward fade for hero line, then card row. animation-delay cascade ~60ms apart.",
+    "hover": "Gentle background lifts and 1.02–1.05 scale on imagery. Borders brighten on pills/cards."
+  },
+
+  "principles": [
+    "Pure black is the canvas; charcoal #171717 is the only elevation. Never introduce gray gradients into chrome — only into product imagery.",
+    "Type does the heavy lifting: oversized, tightly tracked neo-grotesque headlines against quiet gray supporting copy.",
+    "Color appears ONLY inside product renders and content, never in buttons, links, or backgrounds.",
+    "Whitespace is a feature. Sections are separated by large vertical gaps; labels float well above their content.",
+    "Cards and rows intentionally bleed off the right edge to imply horizontal continuation.",
+    "Contrast hierarchy is strict: #f5f5f5 primary, #a0a0a0 secondary, #6e6e6e tertiary, #4a4a4a quaternary."
+  ]
+}

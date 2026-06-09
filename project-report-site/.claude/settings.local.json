@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(git ls-tree *)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(py -c ' *)",
+      "Bash(pip install *)",
+      "PowerShell(Move-Item \"C:\\\\Users\\\\natha\\\\Desktop\\\\106aProj\\\\project-report-site\\\\incoming\\\\cover shot.png\" \"C:\\\\Users\\\\natha\\\\Desktop\\\\106aProj\\\\project-report-site\\\\assets\\\\cover_shot.png\" -Force)"
     ]
   }
 }

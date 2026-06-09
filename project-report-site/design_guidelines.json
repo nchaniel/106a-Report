@@ -1,0 +1,349 @@
+{
+  "name": "Apple-inspired Design Guidelines",
+  "description": "Visual design system derived from Apple.com reference screenshots (WWDC hero, iPhone 17 promo, legal fine-print, product carousel).",
+  "designPrinciples": [
+    "Generous negative space — let content breathe; never crowd the viewport.",
+    "Center-aligned hero compositions with product or logo as the focal subject.",
+    "Strict typographic hierarchy: oversized display headlines, short taglines, restrained body text.",
+    "High contrast between background and type; rely on neutrals plus a single accent blue for action.",
+    "Imagery does the talking — avoid decorative gradients, borders, or shadows around product photos.",
+    "Light surfaces by default; flip to deep black for cinematic/marquee moments.",
+    "Motion and interaction are subtle: hover state changes are minimal, transitions soft."
+  ],
+  "colors": {
+    "background": {
+      "primary": "#FFFFFF",
+      "secondary": "#F5F5F7",
+      "tertiary": "#FAFAFA",
+      "dark": "#000000",
+      "darkSecondary": "#1D1D1F"
+    },
+    "text": {
+      "primary": "#1D1D1F",
+      "secondary": "#6E6E73",
+      "tertiary": "#86868B",
+      "onDark": "#F5F5F7",
+      "onDarkSecondary": "#A1A1A6"
+    },
+    "accent": {
+      "blue": "#0071E3",
+      "blueHover": "#0077ED",
+      "blueActive": "#0068D1",
+      "linkBlue": "#0066CC"
+    },
+    "border": {
+      "subtle": "#D2D2D7",
+      "divider": "#E8E8ED"
+    },
+    "productGradients": {
+      "warmPeach": "linear-gradient(180deg, #FDEDE5 0%, #FAD6C8 100%)",
+      "coolMint": "linear-gradient(180deg, #E8F1F5 0%, #D6E8F0 100%)",
+      "softLavender": "linear-gradient(180deg, #EFE6F5 0%, #DCC9EA 100%)",
+      "blushPink": "linear-gradient(180deg, #FBE8E8 0%, #F4D2D6 100%)"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "text": "'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    },
+    "scale": {
+      "displayXL": {
+        "fontSize": "80px",
+        "lineHeight": "1.05",
+        "letterSpacing": "-0.015em",
+        "fontWeight": 600,
+        "usage": "Hero marquee titles (e.g., WWDC26)"
+      },
+      "displayLarge": {
+        "fontSize": "56px",
+        "lineHeight": "1.07",
+        "letterSpacing": "-0.005em",
+        "fontWeight": 600,
+        "usage": "Product page primary headings (e.g., iPhone 17)"
+      },
+      "headlineLarge": {
+        "fontSize": "40px",
+        "lineHeight": "1.1",
+        "letterSpacing": "0em",
+        "fontWeight": 600,
+        "usage": "Tile/card headings (Apple for College, MacBook Air)"
+      },
+      "headlineMedium": {
+        "fontSize": "32px",
+        "lineHeight": "1.125",
+        "letterSpacing": "0.004em",
+        "fontWeight": 600,
+        "usage": "Product carousel item titles"
+      },
+      "subhead": {
+        "fontSize": "21px",
+        "lineHeight": "1.38",
+        "letterSpacing": "0.011em",
+        "fontWeight": 400,
+        "usage": "Hero subtitles, taglines under product names"
+      },
+      "body": {
+        "fontSize": "17px",
+        "lineHeight": "1.47",
+        "letterSpacing": "-0.022em",
+        "fontWeight": 400,
+        "usage": "Standard paragraph copy"
+      },
+      "bodySmall": {
+        "fontSize": "14px",
+        "lineHeight": "1.43",
+        "letterSpacing": "-0.016em",
+        "fontWeight": 400,
+        "usage": "Navigation, secondary UI text"
+      },
+      "caption": {
+        "fontSize": "12px",
+        "lineHeight": "1.33",
+        "letterSpacing": "-0.01em",
+        "fontWeight": 400,
+        "usage": "Legal fine print, footnotes, disclaimers"
+      }
+    },
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "treatment": {
+      "headlinesAreCenteredInHeroes": true,
+      "smallcapsOrUppercase": "Avoid uppercase for headlines; reserve for tiny eyebrow labels only.",
+      "italics": "Almost never used."
+    }
+  },
+  "spacing": {
+    "unit": "8px base grid",
+    "scale": {
+      "xs": "4px",
+      "sm": "8px",
+      "md": "16px",
+      "lg": "24px",
+      "xl": "40px",
+      "xxl": "64px",
+      "xxxl": "96px",
+      "section": "120px"
+    },
+    "layout": {
+      "contentMaxWidth": "1024px",
+      "wideMaxWidth": "1440px",
+      "gutter": "22px",
+      "sectionVerticalPaddingDesktop": "96px",
+      "sectionVerticalPaddingMobile": "48px",
+      "interTileGap": "12px"
+    }
+  },
+  "borderRadius": {
+    "none": "0",
+    "small": "8px",
+    "medium": "12px",
+    "large": "18px",
+    "xlarge": "28px",
+    "pill": "980px",
+    "tile": "18px",
+    "imageCard": "20px"
+  },
+  "shadows": {
+    "none": "none",
+    "subtle": "0 1px 2px rgba(0, 0, 0, 0.04)",
+    "card": "0 4px 12px rgba(0, 0, 0, 0.06)",
+    "elevated": "0 8px 24px rgba(0, 0, 0, 0.08)",
+    "philosophy": "Use sparingly. Apple aesthetic is mostly flat; rely on background contrast and whitespace, not drop shadows."
+  },
+  "components": {
+    "navigation": {
+      "topNav": {
+        "height": "44px",
+        "background": "rgba(0, 0, 0, 0.8)",
+        "backdropFilter": "saturate(180%) blur(20px)",
+        "textColor": "#F5F5F7",
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "itemSpacing": "32px",
+        "hoverOpacity": 0.8,
+        "iconSize": "18px",
+        "showsAppleLogo": true,
+        "showsSearchAndBag": true
+      }
+    },
+    "buttons": {
+      "primary": {
+        "shape": "pill",
+        "borderRadius": "980px",
+        "padding": "12px 22px",
+        "background": "#0071E3",
+        "color": "#FFFFFF",
+        "fontSize": "17px",
+        "fontWeight": 400,
+        "border": "none",
+        "hover": {
+          "background": "#0077ED"
+        },
+        "examples": ["Add to calendar", "Learn more", "Buy"]
+      },
+      "secondary": {
+        "shape": "pill",
+        "borderRadius": "980px",
+        "padding": "12px 22px",
+        "background": "transparent",
+        "color": "#0071E3",
+        "fontSize": "17px",
+        "fontWeight": 400,
+        "border": "1px solid #0071E3",
+        "hover": {
+          "background": "rgba(0, 113, 227, 0.06)"
+        },
+        "examples": ["Buy (outlined variant on iPhone 17 promo)"]
+      },
+      "compact": {
+        "shape": "pill",
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "usage": "Inline tile CTAs in two-column promo grid"
+      },
+      "textLink": {
+        "color": "#0066CC",
+        "fontSize": "17px",
+        "fontWeight": 400,
+        "textDecoration": "none",
+        "hover": "underline",
+        "trailingChevron": "Use › glyph for forward navigation (e.g., 'Buy ›')"
+      }
+    },
+    "heroSection": {
+      "darkVariant": {
+        "background": "#000000",
+        "textAlignment": "center",
+        "verticalPadding": "80px 0 120px",
+        "subjectTreatment": "Centered glowing product/logo with soft radial vignette",
+        "headlineColor": "#F5F5F7",
+        "subtitleColor": "#F5F5F7",
+        "ctaPlacement": "below subtitle, single primary button"
+      },
+      "lightVariant": {
+        "background": "#F5F5F7",
+        "textAlignment": "center",
+        "verticalPadding": "56px 0 0",
+        "subjectTreatment": "Product photography flush to bottom of section",
+        "headlineColor": "#1D1D1F",
+        "subtitleColor": "#1D1D1F",
+        "ctaPlacement": "Inline pair: primary filled + secondary outlined"
+      }
+    },
+    "promoTile": {
+      "shape": "Two-column grid, equal widths, 12px gap",
+      "aspectRatio": "1:1 or 4:5 on desktop",
+      "borderRadius": "18px",
+      "background": "Light tinted (white, soft blue, soft pink, etc.)",
+      "padding": "56px 32px 0",
+      "textAlignment": "center",
+      "structure": ["Title (40px)", "Tagline (21px)", "CTA buttons", "Product image flush to bottom"]
+    },
+    "productCarousel": {
+      "background": "#F5F5F7",
+      "itemBackground": "#FFFFFF or light tinted gradient",
+      "itemBorderRadius": "20px",
+      "itemPadding": "0 (image flush) + text block below",
+      "imageAspectRatio": "1:1",
+      "pagination": {
+        "type": "color dots",
+        "size": "8px",
+        "spacing": "8px",
+        "activeColor": "#1D1D1F",
+        "inactiveColor": "#D2D2D7",
+        "placement": "Below image, above title"
+      },
+      "textBlock": {
+        "alignment": "center",
+        "title": "32px semibold",
+        "tagline": "21px regular, max 2 lines",
+        "price": "17px regular, with footnote superscript",
+        "ctaRow": "Primary pill button + text link with chevron, centered, 16px gap"
+      },
+      "scrollBehavior": "Horizontal snap, partial next card visible to hint at scrollability"
+    },
+    "fineprintSection": {
+      "background": "#F5F5F7",
+      "textColor": "#86868B",
+      "fontSize": "12px",
+      "lineHeight": "1.5",
+      "maxWidth": "980px",
+      "padding": "40px 24px",
+      "linkColor": "#0066CC",
+      "linkDecoration": "underline",
+      "paragraphSpacing": "16px",
+      "listStyle": "Numbered with hanging indent"
+    },
+    "paginationDots": {
+      "size": "8px",
+      "gap": "8px",
+      "active": "#1D1D1F",
+      "inactive": "rgba(0, 0, 0, 0.2)",
+      "shape": "circle"
+    }
+  },
+  "imagery": {
+    "style": "Studio product photography on flat or softly tinted backgrounds.",
+    "treatment": [
+      "Always crisp, never filtered or color-graded artistically.",
+      "Subject centered or three-quarter angled.",
+      "Subtle drop shadow under product is acceptable; never an outer glow except for hero marquees.",
+      "Pastel/tinted backgrounds telegraph product family (peach=Pro, mint=Air, lavender=standard, pink=mini)."
+    ],
+    "doNot": [
+      "Overlay text directly on product imagery in dense areas.",
+      "Use stock photography of people in product carousels.",
+      "Apply heavy gradients, vignettes, or grain to product shots."
+    ]
+  },
+  "motion": {
+    "easing": {
+      "default": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      "decelerate": "cubic-bezier(0.0, 0.0, 0.2, 1)",
+      "accelerate": "cubic-bezier(0.4, 0.0, 1, 1)"
+    },
+    "durations": {
+      "fast": "150ms",
+      "base": "250ms",
+      "slow": "400ms"
+    },
+    "patterns": [
+      "Button hover: 150ms background color shift, no scale.",
+      "Carousel slide: 400ms ease-out, snap to card.",
+      "Hero entry: subtle fade + 8px translate-up on load, 500ms.",
+      "Reduce-motion: replace transforms with simple opacity fades."
+    ]
+  },
+  "accessibility": {
+    "minimumContrast": "WCAG AA — 4.5:1 for body, 3:1 for large text.",
+    "focusState": "2px solid #0071E3 outline with 2px offset; never remove outlines without replacement.",
+    "interactiveTargetSize": "Minimum 44x44px tap target.",
+    "respectsPrefersReducedMotion": true,
+    "altText": "All product imagery requires descriptive alt text; decorative images use empty alt."
+  },
+  "responsive": {
+    "breakpoints": {
+      "mobile": "0–734px",
+      "tablet": "735–1067px",
+      "desktop": "1068–1440px",
+      "wide": "1441px+"
+    },
+    "behavior": [
+      "Two-column promo tiles collapse to single column below 735px.",
+      "Display headlines step down ~30% on mobile (e.g., 80px → 48px).",
+      "Top nav collapses to hamburger + Apple logo + bag below 833px.",
+      "Section vertical padding halves on mobile."
+    ]
+  },
+  "voiceAndTone": {
+    "headlines": "Short, declarative, sometimes a coined word (e.g., 'Magichromatic.').",
+    "taglines": "Two short sentences max, often ending with periods for emphasis.",
+    "ctaLabels": "Two-word verbs: 'Learn more', 'Buy', 'Add to calendar'.",
+    "legalCopy": "Dense, precise, set in 12px gray, justified left, never decorated."
+  }
+}

@@ -1,0 +1,186 @@
+/* ============================================================
+   Monochrome Studio — Refined Dark Portfolio Theme
+   Drop-in stylesheet generated from design_guidelines.json
+   ------------------------------------------------------------
+   Usage:
+     <link rel="stylesheet" href="theme.css">
+   Then use the component classes below (.btn-circle, .pill,
+   .card, .quote-card, .label, .step, etc.) in your HTML.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap");
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* backgrounds */
+  --bg: #000000;
+  --card: #171717;
+  --card-hover: #1d1d1d;
+  --glow: rgba(255, 255, 255, 0.05);
+
+  /* text hierarchy */
+  --text-1: #f5f5f5;   /* primary   */
+  --text-2: #a0a0a0;   /* secondary */
+  --text-3: #6e6e6e;   /* tertiary  */
+  --text-4: #4a4a4a;   /* quaternary */
+  --quote:  #ededed;
+
+  /* lines / borders */
+  --line: rgba(255, 255, 255, 0.08);
+  --pill-line: rgba(255, 255, 255, 0.16);
+  --pill-line-strong: rgba(255, 255, 255, 0.24);
+
+  /* accents — use ONLY inside imagery/content, never chrome */
+  --accent-red: #c4584f;
+  --accent-purple: #6c63d8;
+  --accent-mint: #3aa088;
+
+  /* type */
+  --font-display: "Geist", "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "SFMono-Regular", "SF Mono", ui-monospace, Menlo, monospace;
+
+  /* space + shape + motion */
+  --pad-x: clamp(1.5rem, 4vw, 2.75rem);
+  --section-gap: clamp(7rem, 14vh, 11rem);
+  --radius: 20px;
+  --radius-lg: 24px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-display);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: #2a2a2a; color: #fff; }
+
+/* ---------- Layout helpers ---------- */
+.section { padding: var(--section-gap) var(--pad-x) 0; }
+.pad-x   { padding-left: var(--pad-x); padding-right: var(--pad-x); }
+.bleed-row {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.bleed-row::-webkit-scrollbar { display: none; }
+
+/* ---------- Typography ---------- */
+.display-hero {
+  font-size: clamp(3.5rem, 11.5vw, 10.5rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.038em;
+  color: var(--text-1);
+  margin: 0;
+}
+.display-project {
+  font-size: clamp(4rem, 16vw, 13rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.label {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+}
+.meta-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.text-2 { color: var(--text-2); }
+.text-3 { color: var(--text-3); }
+
+/* ---------- Circular icon button (nav) ---------- */
+.btn-circle {
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border: 1px solid var(--pill-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-3);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+.btn-circle:hover { border-color: var(--pill-line-strong); color: var(--text-1); }
+
+/* ---------- Pill / tag ---------- */
+.pills { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.pill {
+  font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+  color: var(--text-1);
+  padding: 0.7em 1.35em;
+  border: 1px solid var(--pill-line);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+  transition: border-color 0.35s var(--ease), background 0.35s var(--ease);
+  cursor: default;
+}
+.pill:hover { border-color: var(--pill-line-strong); background: rgba(255,255,255,0.05); }
+.pill--sm { font-size: 0.8rem; padding: 0.55em 1.1em; letter-spacing: 0.04em; text-transform: uppercase; }
+
+/* ---------- Card (project / generic elevated) ---------- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  transition: background 0.4s var(--ease);
+}
+.card:hover { background: var(--card-hover); }
+.card__title { font-size: 1.5rem; font-weight: 500; letter-spacing: -0.015em; margin: 0; }
+.card__subtitle { font-size: 1.05rem; color: var(--text-2); margin: 0.35rem 0 0; }
+
+/* ---------- Testimonial / quote card ---------- */
+.quote-card {
+  background:
+    radial-gradient(120% 60% at 50% 0%, var(--glow), transparent 60%),
+    var(--card);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.quote-card__text {
+  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+  color: var(--quote);
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+}
+.quote-card__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; }
+.quote-card__who { color: var(--text-3); font-size: 1.05rem; font-weight: 500; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #555, #2a2a2a); }
+
+/* ---------- Numbered approach step ---------- */
+.step { display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.6rem; }
+.step__num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-3); padding-top: 0.15rem; }
+.step p { margin: 0; font-size: 1rem; color: var(--text-2); line-height: 1.5; }
+.step p b { color: var(--text-1); font-weight: 600; }
+
+/* ---------- Muted logo row ---------- */
+.logo-row { display: flex; align-items: center; gap: clamp(2rem, 5vw, 4rem); overflow-x: auto; scrollbar-width: none; }
+.logo-row::-webkit-scrollbar { display: none; }
+.logo-row > * {
+  white-space: nowrap; color: var(--text-3); opacity: 0.55;
+  font-weight: 600; font-size: 1.4rem; letter-spacing: 0.02em;
+  transition: opacity 0.35s var(--ease);
+}
+.logo-row > *:hover { opacity: 0.9; }
+
+/* ---------- Page-load reveal ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+.rise { opacity: 0; animation: rise 0.9s var(--ease) forwards; }

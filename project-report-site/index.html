@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Robot Ratatouille: Culinary Robot Project</title>
-<meta name="theme-color" content="#1a1a1a" />
+<meta name="theme-color" content="#000000" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,11 +24,12 @@
   <div class="topbar-inner">
     <a class="brand" href="#top">
       <span class="brand-mark"></span>
-      <span class="brand-text">Robot Ratatouille: Culinary Robot Project 🍽️</span>
+      <span class="brand-text">Robot Ratatouille: Culinary Robot Project</span>
     </a>
     <nav class="nav">
       <a href="#overview">Overview</a>
       <a href="#design">Design/Implementation</a>
+      <a href="#details">Details</a>
       <a href="#results">Results</a>
       <a href="#conclusion">Conclusion</a>
     </nav>
@@ -41,7 +42,7 @@
 <section class="hero">
   <div class="hero-text">
     <p class="eyebrow">ME C106A · Final Project Report</p>
-    <h1>Robot Ratatouille: Culinary Robot Project 🍽️</h1>
+    <h1>Robot Ratatouille: Culinary Robot Project</h1>
     <p class="lede">
       Culinary plating assistant made with an Intel RealSense camera paired with a UR7e Robotic Arm. Detects, scans, and memorizes plated dishes to replicate on command.
     </p>
@@ -55,34 +56,9 @@
     </div>
   </div>
 
-  <!-- Rotating carousel -->
-  <figure class="hero-figure carousel" aria-roledescription="carousel" aria-label="Segmentation results from the orbit inspection">
-    <div class="carousel-track" id="carouselTrack">
-      <div class="carousel-slide is-active">
-        <img src="assets/seg_all_1.png" alt="Automatic Plate Detection" />
-        <figcaption><span class="kbd">01</span> Automatic Plate Detection</figcaption>
-      </div>
-      <div class="carousel-slide">
-        <img src="assets/seg_all_15.png" alt="Multi-Angle Scans" />
-        <figcaption><span class="kbd">02</span> Multi-Angle Scans</figcaption>
-      </div>
-      <div class="carousel-slide">
-        <img src="assets/seg_all_20.png" alt="Precise Masking" />
-        <figcaption><span class="kbd">03</span> Precise Masking</figcaption>
-      </div>
-      <div class="carousel-slide">
-        <img src="assets/seg_apple_15.png" alt="Individual Detection" />
-        <figcaption><span class="kbd">04</span> Individual Detection</figcaption>
-      </div>
-    </div>
-    <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
-    <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
-    <div class="carousel-dots" role="tablist" aria-label="Carousel pagination">
-      <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" data-i="0"></button>
-      <button class="carousel-dot" role="tab" aria-label="Slide 2" data-i="1"></button>
-      <button class="carousel-dot" role="tab" aria-label="Slide 3" data-i="2"></button>
-      <button class="carousel-dot" role="tab" aria-label="Slide 4" data-i="3"></button>
-    </div>
+  <!-- Cover shot -->
+  <figure class="hero-figure hero-cover">
+    <img src="assets/cover_shot.png" alt="Robot Ratatouille — the UR7e arm and a plated dish" />
   </figure>
 </section>
 
@@ -91,15 +67,22 @@
 <div class="section-head">
     <h2><span class="num">1</span> Project Background</h2>
     <p class="section-desc">
-      What if a robot could plate a dish as well as a human? Robotic culinary plating requires accurate perception,
-      spatial reasoning, and delicate manipulation. This project presents a robotic culinary plating assistant that uses a
+      What if a robot could plate a dish as well as a human? Robotic culinary plating requires:
+    </p>
+    <ul class="pills">
+      <li class="pill">Accurate perception</li>
+      <li class="pill">Spatial reasoning</li>
+      <li class="pill">Delicate manipulation</li>
+    </ul>
+    <p class="section-desc">
+      This project presents a robotic culinary plating assistant that uses a
       UR7e arm with an attached camera to capture a completed dish from multiple viewpoints and reconstruct
       a 3D model of the plated arrangement. The system identifies food items, estimates their
-      poses relative to varying frames, and generates a pick-and-place plan to recreate the dish. Such a robot would be able to 
+      poses relative to varying frames, and generates a pick-and-place plan to recreate the dish. Such a robot would be able to
       quickly, accurately, and consistently recreate dishes, allowing for shorter waiting times at restaurants.
     </p>
   </div>
-</section>  
+</section>
 
 <!-- ============================================================ PROJECT OVERVIEW -->
 <section id="overview" class="section">
@@ -114,12 +97,12 @@
     <article class="phase-card">
       <h3><span class="phase-num">01</span> Inspection</h3>
       <p>
-        The robot arm detects the plate and proceeds to orbit around the plate twice, 
+        The robot arm detects the plate and proceeds to orbit around the plate twice,
         taking multiple photos at different angles throughout the process. The photos
         are saved to a folder ready for segmentation.
       </p>
       <p class="phase-foot">
-        <a href="#design" data-open-detail="armcircler">More on Inspection →</a>
+        <a href="#detail-armcircler">More on Inspection →</a>
       </p>
     </article>
 
@@ -131,7 +114,7 @@
         various ingredients in view, the robot begins plating.
       </p>
       <p class="phase-foot">
-        <a href="#design" data-open-detail="main">More on Execution →</a>
+        <a href="#detail-main">More on Execution →</a>
       </p>
     </article>
   </div>
@@ -142,168 +125,107 @@
   <div class="section-head">
     <h2><span class="num">3</span> Design/Implementation</h2>
     <p class="section-sub">
-      The pipeline makes use of two ROS2 packages, <code>perception</code>
-      and <code>planning</code>, with MoveIt providing IK and motion
-      planning. Click any component below to open its details.
+      The pipeline splits into two ROS 2 packages &mdash; <code>perception</code> and <code>planning</code> &mdash; talking through topics, with MoveIt providing IK and motion planning underneath.
     </p>
   </div>
 
-  <div class="diagram-wrap" aria-label="System design diagram. Click components for details.">
-    <svg viewBox="0 0 1100 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ROS 2 design for vision-guided pick and place" class="arch-svg">
-      <defs>
-        <marker id="arrow-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,0.42)" />
-        </marker>
-        <marker id="arrow-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,0.42)" />
-        </marker>
-        <marker id="arrow-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,0.42)" />
-        </marker>
-
-        <linearGradient id="g-perception" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="rgba(255,255,255,0.055)"/>
-          <stop offset="1" stop-color="rgba(255,255,255,0.018)"/>
-        </linearGradient>
-        <linearGradient id="g-planning" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="rgba(255,255,255,0.045)"/>
-          <stop offset="1" stop-color="rgba(255,255,255,0.015)"/>
-        </linearGradient>
-        <linearGradient id="g-hw" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="rgba(255,255,255,0.06)"/>
-          <stop offset="1" stop-color="rgba(255,255,255,0.02)"/>
-        </linearGradient>
-      </defs>
-
-      <!-- Hardware column -->
-      <g class="arch-node" data-detail="camera" tabindex="0" role="button" aria-label="RealSense camera details">
-        <rect x="20" y="30" width="240" height="100" rx="10" fill="url(#g-hw)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
-        <text x="140" y="62" text-anchor="middle" class="diag-title">RealSense Camera</text>
-        <text x="140" y="84" text-anchor="middle" class="diag-sub">Provides vision</text>
-        <text x="140" y="104" text-anchor="middle" class="diag-sub">Publishes Pointclouds</text>
-      </g>
-      
-      <!-- YOLO model block -->
-      <g class="arch-node" data-detail="yolo-model" tabindex="0" role="button" aria-label="YOLO model details">
-        <rect x="20" y="240" width="240" height="100" rx="10" fill="url(#g-hw)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
-        <text x="140" y="272" text-anchor="middle" class="diag-title">Custom-Trained YOLO Model</text>
-        <text x="140" y="296" text-anchor="middle" class="diag-sub">Real-time object detection</text>
-        <text x="140" y="318" text-anchor="middle" class="diag-sub">Shows bounding box + class output</text>
-      </g>
-
-      <g class="arch-node" data-detail="robot" tabindex="0" role="button" aria-label="UR7e arm and gripper details">
-        <rect x="20" y="440" width="240" height="90" rx="10" fill="url(#g-hw)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
-        <text x="140" y="472" text-anchor="middle" class="diag-title">UR7e Arm</text>
-        <text x="140" y="494" text-anchor="middle" class="diag-sub">Gripper Attachment</text>
-        <text x="140" y="512" text-anchor="middle" class="diag-sub">ROS2</text>
-      </g>
-
-      <!-- Perception package -->
-      <g>
-        <rect x="320" y="20" width="320" height="230" rx="12" fill="url(#g-perception)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
-        <text x="480" y="46" text-anchor="middle" class="diag-pkg">perception</text>
-
-        <g class="arch-node" data-detail="detection" tabindex="0" role="button" aria-label="DetectionNode details">
-          <rect x="340" y="62" width="280" height="50" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="480" y="82" text-anchor="middle" class="diag-title">DetectionNode</text>
-          <text x="480" y="100" text-anchor="middle" class="diag-sub">YOLO → bbox → cloud centroid → TF</text>
-        </g>
-
-        <g class="arch-node" data-detail="yolo" tabindex="0" role="button" aria-label="YOLODetector details">
-          <rect x="340" y="122" width="135" height="42" rx="6" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="407" y="148" text-anchor="middle" class="diag-sub">YOLODetector</text>
-        </g>
-
-        <g class="arch-node" data-detail="pixel" tabindex="0" role="button" aria-label="pixel_to_world details">
-          <rect x="485" y="122" width="135" height="42" rx="6" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="552" y="148" text-anchor="middle" class="diag-sub">pixel_to_world</text>
-        </g>
-
-        <rect x="340" y="172" width="280" height="60" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)"/>
-        <text x="480" y="195" text-anchor="middle" class="diag-sub">/detected_pick_point · /detected_class</text>
-        <text x="480" y="215" text-anchor="middle" class="diag-sub">· /detected_plate_point</text>
-      </g>
-
-      <!-- Planning package -->
-      <g>
-        <rect x="700" y="20" width="380" height="460" rx="12" fill="url(#g-planning)" stroke="rgba(255,255,255,0.22)" stroke-opacity="0.7" />
-        <text x="890" y="46" text-anchor="middle" class="diag-pkg">planning</text>
-
-        <g class="arch-node" data-detail="armcircler" tabindex="0" role="button" aria-label="ArmCircler details">
-          <rect x="720" y="62" width="340" height="62" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="890" y="84" text-anchor="middle" class="diag-title">ArmCircler</text>
-          <text x="890" y="104" text-anchor="middle" class="diag-sub">2×20 orbit · saves captured_images/ + poses.npy</text>
-        </g>
-
-        <g class="arch-node" data-detail="commander" tabindex="0" role="button" aria-label="Commander details">
-          <rect x="720" y="138" width="340" height="78" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="890" y="160" text-anchor="middle" class="diag-title">Commander (separate terminal)</text>
-          <text x="890" y="180" text-anchor="middle" class="diag-sub">segment_batch.py → 6D_poses/run.py</text>
-          <text x="890" y="198" text-anchor="middle" class="diag-sub">/start_pick_place · /set_target_class</text>
-        </g>
-
-        <g class="arch-node" data-detail="poses" tabindex="0" role="button" aria-label="6D Poses details">
-          <rect x="720" y="232" width="160" height="78" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="800" y="254" text-anchor="middle" class="diag-title">6D Poses</text>
-          <text x="800" y="274" text-anchor="middle" class="diag-sub">run.py → triangulation</text>
-          <text x="800" y="292" text-anchor="middle" class="diag-sub">results/object_poses.npy</text>
-        </g>
-
-        <g class="arch-node" data-detail="main" tabindex="0" role="button" aria-label="UR7e_CubeGrasp details">
-          <rect x="900" y="232" width="160" height="86" rx="8" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="980" y="254" text-anchor="middle" class="diag-title">UR7e_CubeGrasp</text>
-          <text x="980" y="274" text-anchor="middle" class="diag-sub">busy semaphore · job queue</text>
-          <text x="980" y="292" text-anchor="middle" class="diag-sub">hover → descend → grip → lift</text>
-          <text x="980" y="310" text-anchor="middle" class="diag-sub">PICK_OFFSETS per class</text>
-        </g>
-
-        <g class="arch-node" data-detail="ik" tabindex="0" role="button" aria-label="IKPlanner details">
-          <rect x="720" y="336" width="160" height="46" rx="6" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="800" y="362" text-anchor="middle" class="diag-sub">IKPlanner</text>
-        </g>
-
-        <g class="arch-node" data-detail="tf" tabindex="0" role="button" aria-label="static_tf_transform details">
-          <rect x="900" y="336" width="160" height="46" rx="6" fill="rgba(255,255,255,0.028)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="980" y="362" text-anchor="middle" class="diag-sub">static_tf_transform</text>
-        </g>
-
-        <g class="arch-node" data-detail="moveit" tabindex="0" role="button" aria-label="MoveIt 2 details">
-          <rect x="720" y="404" width="340" height="46" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)"/>
-          <text x="890" y="430" text-anchor="middle" class="diag-sub">MoveIt 2 · /compute_ik · /plan_kinematic_path</text>
-        </g>
-      </g>
-
-      <!-- Arrows -->
-      <line x1="260" y1="75"  x2="320" y2="135" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-g)"/>
-      <line x1="260" y1="290" x2="320" y2="135" stroke="rgba(255,255,255,0.22)" stroke-width="2"marker-end="url(#arrow-g)"/>
-      <line x1="260" y1="290" x2="700" y2="255" stroke="rgba(255,255,255,0.22)" stroke-width="2"marker-end="url(#arrow-g)"/>
-
-      <line x1="640" y1="200" x2="720" y2="170" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-b)"/>
-      <line x1="640" y1="200" x2="720" y2="90"  stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-b)"/>
-
-      <line x1="790" y1="216" x2="790" y2="232" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="810" y1="232" x2="810" y2="216" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="980" y1="216" x2="980" y2="232" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-p)"/>
-
-      <line x1="800" y1="383" x2="890" y2="405" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" marker-end="url(#arrow-p)"/>
-
-      <line x1="720" y1="432" x2="260" y2="480" stroke="rgba(255,255,255,0.22)" stroke-width="2" marker-end="url(#arrow-p)"/>
-      <line x1="980" y1="385" x2="980" y2="510" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="5 4"/>
-      <line x1="980" y1="510" x2="260" y2="510" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-p)"/>
-      <text x="600" y="505" class="diag-sub">static TF: wrist_3_link → camera_link</text>
-
-    </svg>
-    <!-- <p class="diagram-hint">Tip: every block is clickable.</p> We don't need this, no point.-->
+  <div class="section-body design-intro">
+    <p>
+      The <code>perception</code> package owns everything between the camera and a labeled 3D point: it runs YOLO on every RGB frame, lifts each bounding box into a 3D centroid using the RealSense depth pointcloud, and publishes detections in the robot&rsquo;s base frame. The <code>planning</code> package owns the motion: it orbits the arm for inspection, accepts segmented poses from an offline 6D pose pipeline, and drives the pick-and-place state machine. The hardware layer &mdash; the RealSense camera, the custom-trained YOLO weights, and the UR7e arm &mdash; feeds frames into perception and is commanded by planning.
+    </p>
+    <p>Read top-to-bottom, the data flow is:</p>
+    <ol class="steps steps--flow">
+      <li class="step">
+        <span class="step__num">01</span>
+        <div class="step__body">the camera publishes RGB plus a depth pointcloud</div>
+      </li>
+      <li class="step">
+        <span class="step__num">02</span>
+        <div class="step__body"><strong>DetectionNode</strong> pairs YOLO bounding boxes with depth points to produce world-frame centroids</div>
+      </li>
+      <li class="step">
+        <span class="step__num">03</span>
+        <div class="step__body"><strong>ArmCircler</strong> executes a 41-waypoint orbit and saves images for offline processing</div>
+      </li>
+      <li class="step">
+        <span class="step__num">04</span>
+        <div class="step__body"><strong>Commander</strong> runs SAM2 segmentation and 6D pose triangulation</div>
+      </li>
+      <li class="step">
+        <span class="step__num">05</span>
+        <div class="step__body"><strong>UR7e_CubeGrasp</strong> consumes the resulting object list and runs the hover &rarr; descend &rarr; grip &rarr; lift &rarr; place sequence.</div>
+      </li>
+    </ol>
+    <p>
+      MoveIt underlies the whole thing, providing inverse kinematics through <code>/compute_ik</code> and collision-aware trajectory planning through <code>/plan_kinematic_path</code>.
+    </p>
+    <p>
+      The diagram below mirrors that layout: hardware at the top sources data, <code>perception</code> extracts 3D world-frame detections, <code>planning</code> orchestrates the orbit and pick-and-place, and MoveIt sits underneath providing IK and motion planning. Click any block to jump straight to its detailed write-up in the <a href="#details">Details</a> section below.
+    </p>
   </div>
 
-  <!-- Detail panel: shows technical content for the clicked component -->
-  <div id="detailPanel" class="detail-panel" aria-live="polite">
-    <div class="detail-empty">
-      <p>Click a component above to read its details here.</p>
+  <div class="dataflow-wrap" aria-label="Interactive system diagram. Click a node to read details.">
+    <div class="dataflow-stage" id="dataflowStage">
+      <svg class="dataflow-links" id="dataflowLinks" aria-hidden="true"></svg>
+      <div class="dataflow-row" data-layer="hardware">
+        <span class="dataflow-row-label">Hardware</span>
+        <div class="dataflow-row-nodes" data-layer="hardware"></div>
+      </div>
+      <div class="dataflow-row" data-layer="perception">
+        <span class="dataflow-row-label">Perception</span>
+        <div class="dataflow-row-nodes" data-layer="perception"></div>
+      </div>
+      <div class="dataflow-row" data-layer="planning">
+        <span class="dataflow-row-label">Planning</span>
+        <div class="dataflow-row-nodes" data-layer="planning"></div>
+      </div>
     </div>
+    <p class="dataflow-hint" aria-hidden="true">
+      <span class="dataflow-hint-dot"></span>
+      Click any node to highlight its connections.
+    </p>
+    <div class="dataflow-card" id="dataflowCard" role="dialog" aria-modal="false" aria-live="polite" hidden></div>
+  </div>
+</section>
 
-    <!-- Hidden content blocks; revealed by JS -->
-    <template id="tpl-camera">
+<!-- ============================================================ DETAILS -->
+<section id="details" class="section">
+  <div class="section-head">
+    <h2><span class="num">4</span> Details</h2>
+    <p class="section-sub">
+      The full deep-dive: a demo video showing the end-to-end pipeline, followed by a per-component explanation of the whole pipeline as well as critical design choices.
+    </p>
+  </div>
+
+  <!-- Demo video at the top of Details -->
+  <div class="demo-centered details-demo">
+    <figure class="figure figure-wide">
+      <div class="video-frame">
+        <iframe
+          src="https://drive.google.com/file/d/1ZvJWHgZEgT7H33ZIcDSmg-mxVdF9k3Mp/preview"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p>End-to-end demo run &mdash; orbit inspection &rarr; segmentation &rarr; pick-and-place sequence.</p>
+    </figure>
+  </div>
+
+  <!-- ===== Inlined component subsections ===== -->
+
+  <article id="detail-robot" class="detail-section">
+    <div class="detail-body">
+      <header><span class="tag tag-hw">Hardware</span><h3>UR7e Arm + Gripper</h3></header>
+      <p>6-DoF Universal Robots UR7e with a parallel gripper. The arm is driven through the <code>scaled_joint_trajectory_controller</code>'s FollowJointTrajectory action.</p>
+      <ul>
+        <li><strong>Gripper toggle:</strong> <code>/toggle_gripper</code> Triggers the gripper to open and close. It's assumed to be open at the startup.</li>
+        <li><strong>Joint feedback:</strong> <code>/joint_states</code> /joint_states is the topic that contains the current joint states in radians. It's used in the IK solver, armcircler, and the pick and place.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article id="detail-camera" class="detail-section">
+    <div class="detail-body">
       <header><span class="tag tag-hw">Hardware</span><h3>Intel RealSense D-series</h3></header>
       <p>Wrist-mounted depth camera providing aligned RGB, depth, and intrinsics over the standard RealSense ROS 2 topics.</p>
       <ul>
@@ -312,32 +234,47 @@
         <li><code>/camera/.../color/camera_info</code> — intrinsics used by <code>pixel_to_world</code> to calculate the position of objects based on where they appear on the image plane (camera).</li>
       </ul>
       <p class="callout-inline"><strong>Note —</strong> the camera launch is intentionally external to the bringup so we can restart it without tearing down the planner.</p>
-    </template>
+    </div>
+  </article>
 
-<template id="tpl-yolo-model">
-  <header><span class="tag tag-perc">perception</span><h3>Custom-Trained YOLO Model</h3></header>
-  <p>A custom YOLO model was trained on images of 3D-printed food replicas for real-time object detection within the workspace. Done separately from the main design.</p>
-  <ul>
-    <li><strong>Dataset:</strong> Approximately 800 labeled images created using <code>Label Studio</code>.</li>
-    <li><strong>Training diversity:</strong> Images were collected under varying conditions including different heights, viewing angles, lighting conditions, object distances, partial occlusions, and proximity to similarly-colored objects.</li>
-    <li><strong>Iterative training:</strong> The model was retrained in batches of roughly 50 new images at a time, typically for around 50 epochs after each dataset expansion.</li>
-    <li><strong>Assisted labeling:</strong> Once the dataset reached roughly 500 images, the partially-trained model was used to generate predicted labels to accelerate annotation and dataset growth.</li>
-    <li><strong>Final training:</strong> The completed dataset was used for a final full training pass of approximately 50 epochs.</li>
-    <li><strong>Weights:</strong> <code>updated.pt</code> (fine-tuned) is the primary model; previous models are retained as fallback checkpoints.</li>
-    <p class="callout-inline"><strong>Note —</strong> food wasn't allowed in the lab; existing YOLO models trained on real food couldn't be utilized, requiring us to train one ourselves.</p>
-  </ul>
-</template>
+  <article id="detail-yolo-model" class="detail-section">
+    <div class="detail-body">
+      <header><span class="tag tag-perc">perception</span><h3>Custom-Trained YOLO Model</h3></header>
+      <p>A custom YOLO model was trained on images of 3D-printed food replicas for real-time object detection within the workspace. Done separately from the main design.</p>
+      <div class="detail-media-row media-right">
+        <div>
+          <ul>
+            <li><strong>Dataset:</strong> Approximately 800 labeled images created using <code>Label Studio</code>.</li>
+            <li><strong>Training diversity:</strong> Images were collected under varying conditions including different heights, viewing angles, lighting conditions, object distances, partial occlusions, and proximity to similarly-colored objects.</li>
+            <li><strong>Iterative training:</strong> The model was retrained in batches of roughly 50 new images at a time, typically for around 50 epochs after each dataset expansion.</li>
+            <li><strong>Assisted labeling:</strong> Once the dataset reached roughly 500 images, the partially-trained model was used to generate predicted labels to accelerate annotation and dataset growth.</li>
+            <li><strong>Final training:</strong> The completed dataset was used for a final full training pass of approximately 50 epochs.</li>
+            <li><strong>Weights:</strong> <code>updated.pt</code> (fine-tuned) is the primary model; previous models are retained as fallback checkpoints.</li>
+          </ul>
+        </div>
+        <div class="media-pair">
+          <figure class="figure">
+            <img src="assets/yolo1.png" alt="YOLO detection on plated foods">
+            <figcaption>Every object class detected at 0.90+ confidence.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/yolo2.png" alt="YOLO detection on a dense scene with overlapping food classes">
+            <figcaption>YOLO model handles dense images with occlusions.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="callout-inline"><strong>Note —</strong> food wasn't allowed in the lab; existing YOLO models trained on real food couldn't be utilized, requiring us to train one ourselves.</p>
+      <div class="design-choices">
+        <h4>Design Choices</h4>
+        <p>We chose YOLO as our object detector because it was fast, practical, and well-suited to our setup. Since the camera is constantly moving around the dish, it needs to reliably identify objects from many different angles and lighting conditions. YOLO handles this well with its single-stage architecture, which detects and classifies objects in one forward pass rather than multiple stages, keeping inference fast enough to run alongside the orbit in real time.</p>
+        <p>A custom model was necessary because our fruits are 3D-printed props with different colors and surface textures from real fruit, meaning no pretrained detector worked out of the box. We collected our own dataset of the props and fine-tuned YOLO from pretrained weights, which converged well even with a relatively small number of training images.</p>
+        <p>The alternatives we considered each had drawbacks. Classical computer vision techniques like color thresholding are too brittle under changing viewpoints and lighting, while heavier two-stage detectors like Faster R-CNN offer marginal accuracy gains at the cost of much slower training and inference. Since bounding boxes are sufficient to identify and localize each item on the plate, YOLO gave the best balance of accuracy, speed, and practicality within the time constraints of the project.</p>
+      </div>
+    </div>
+  </article>
 
-    <template id="tpl-robot">
-      <header><span class="tag tag-hw">Hardware</span><h3>UR7e Arm + Gripper</h3></header>
-      <p>6-DoF Universal Robots UR7e with a parallel gripper. The arm is driven through the <code>scaled_joint_trajectory_controller</code>'s FollowJointTrajectory action.</p>
-      <ul>
-        <li><strong>Gripper toggle:</strong> <code>/toggle_gripper</code> Triggers the gripper to open and close. It’s assumed to be open at the startup.</li>
-        <li><strong>Joint feedback:</strong> <code>/joint_states</code> /joint_states is the topic that contains the current joint states in radians. It’s used in the IK solver, armcircler, and the pick and place.</li>
-      </ul>
-    </template>
-
-    <template id="tpl-detection">
+  <article id="detail-detection" class="detail-section">
+    <div class="detail-body">
       <header><span class="tag tag-perc">perception</span><h3>DetectionNode</h3></header>
       <p>The main perception node. Runs YOLOv8 on every RGB frame, lifts each bbox into a 3D centroid through the depth pointcloud, and publishes the result in <code>base_link</code>.</p>
       <ol class="steps-inline">
@@ -348,10 +285,15 @@
         <li><strong>Publish.</strong> Highest-confidence survivor on <code>/detected_pick_point</code>; plate always published on <code>/detected_plate_point</code>.</li>
       </ol>
       <p><strong>Topic ordering matters —</strong> <code>/detected_class</code> must arrive before <code>/detected_pick_point</code>, otherwise per-class offsets silently fall back to defaults.</p>
-    </template>
-  
+      <div class="design-choices">
+        <h4>Design Choices</h4>
+        <p>For plate exclusion, we chose to filter by radius from the plate centroid rather than by the plate's bounding box. A bounding box would incorrectly exclude objects sitting near the corners of the box but outside the actual plate boundary, since the plate itself is circular. Using a fixed radius from the centroid more closely matches the plate's true shape, so only objects genuinely on or overlapping the plate are dropped.</p>
+      </div>
+    </div>
+  </article>
 
-    <template id="tpl-yolo">
+  <article id="detail-yolo" class="detail-section">
+    <div class="detail-body">
       <header><span class="tag tag-perc">perception</span><h3>YOLODetector</h3></header>
       <p>Thin stateless wrapper around Ultralytics YOLOv8. <code>detect(image)</code> returns a list of <code>{class_id, class_name, confidence, bbox, center}</code> dicts.</p>
       <ul>
@@ -359,9 +301,11 @@
         <li><strong>Threshold:</strong> <code>conf_threshold</code> parameter on <code>DetectionNode</code> (default 0.5).</li>
         <li>No state, no temporal smoothing — every frame is independent.</li>
       </ul>
-    </template>
+    </div>
+  </article>
 
-    <template id="tpl-pixel">
+  <article id="detail-pixel" class="detail-section">
+    <div class="detail-body">
       <header><span class="tag tag-perc">perception</span><h3>pixel_to_world</h3></header>
       <p>Helper module that converts 2D detections into 3D centroids in <code>base_link</code>.</p>
       <ul>
@@ -369,11 +313,32 @@
         <li><code>transform_point()</code> — TF lookup chained from <code>camera_link</code> through the static TF and the UR kinematic chain.</li>
         <li>Returns a <code>PointStamped</code> in <code>base_link</code>, ready for IK.</li>
       </ul>
-    </template>
+      <div class="design-choices">
+        <h4>Design Choices</h4>
+        <p>A key challenge was getting YOLO's 2D bounding boxes to interface correctly with the 3D coordinates from the RealSense camera. Our initial approach was to take the bounding box centroid from YOLO and pair it with the depth value from the RealSense to produce a 3D point. In testing, this caused the arm to move to locations far from the detected object.</p>
+        <p>We identified two likely causes:</p>
+        <ul>
+          <li><strong>No grounded reference frame.</strong> The bounding box centroids were in a 2D image coordinate frame with no clear tie to the robot's base frame. As the camera moved, we had no reliable way to know where the image origin was in the world, making the transform from pixel coordinates to base frame unreliable.</li>
+          <li><strong>Incorrect static transform.</strong> We had been using the same camera-to-wrist transform from a previous lab, but when we visualized the point cloud in RViz, the frames were visibly skewed — meaning the transform did not reflect our actual camera mount geometry.</li>
+        </ul>
+        <p>With too many unknowns in the frame chain, we decided this approach would take too long to debug and moved to a more principled method using the camera intrinsic matrix.</p>
+        <p>Rather than starting from 2D pixel coordinates, we instead projected the RealSense's 3D point cloud into image space using the pinhole camera equations:</p>
+        <div class="model-block">
+          <code>u = fx * X/Z + cx</code>
+          <code>v = fy * Y/Z + cy</code>
+        </div>
+        <p>This let us identify which 3D points fell inside each YOLO bounding box, take the mean X, Y, and Z of those points, and publish that as the object's 3D centroid. Combined with correcting the static transform to match our actual camera mount, this approach worked reliably.</p>
+      </div>
+    </div>
+  </article>
 
-    <template id="tpl-armcircler">
+  <article id="detail-armcircler" class="detail-section">
+    <div class="detail-body">
       <header><span class="tag tag-plan">planning</span><h3>ArmCircler — Orbit Inspection</h3></header>
       <p>The ArmCircler node is responsible for executing a sequence of joint trajectories using an action client and taking pictures at each waypoint. It uses the <code>FollowJointTrajectory</code> action type, which handles trajectory goals, feedback, and results.</p>
+      <figure class="figure">
+        <img src="assets/arm_circling.jpg" alt="Arm circling the plate during orbit inspection">
+      </figure>
       <ol class="steps-inline">
         <li><strong>Plate detection:</strong> Uses YOLO to find the plate and extracts the bounding box centerpoint as the reference point for trajectory planning.</li>
         <li><strong>Waypoint generation:</strong> Two nested for loops generate waypoints at two height levels—each tracing an arc around the plate—plus one point above facing down.</li>
@@ -387,307 +352,417 @@
         <li><strong>Heights:</strong> row 1 at 0.30 m, row 2 reversed at 0.20 m.</li>
         <li><strong>Total waypoints:</strong> 2 rows × 20 waypoints + 1 overhead shot = 41 frames.</li>
       </ul>
-      <p>These frames are captured as a multi-view orbit around the plate, with representative shots taken at key points such as frames 1, 15, and 30, and can be seen below. Each image is stored in <code>captured_images/</code> and used downstream by the segmentation and triangulation pipeline.</p>
-      <div class="gallery gallery-inline">
-        <figure><img src="assets/captured_1.jpg" alt="Orbit frame 1"><figcaption>Frame 1</figcaption></figure>
-        <figure><img src="assets/captured_15.jpg" alt="Orbit frame 15"><figcaption>Frame 15</figcaption></figure>
-        <figure><img src="assets/captured_30.jpg" alt="Orbit frame 30"><figcaption>Frame 30</figcaption></figure>
+      <p>These frames are captured as a multi-view orbit around the plate. Drag the scrubber below to step through all 41 waypoints. The full set lives in <code>captured_images/</code> for the downstream segmentation and triangulation pipeline.</p>
+      <div class="orbit-scrubber">
+        <figure class="orbit-frame">
+          <img id="orbitImg" src="assets/captured_1.jpg" alt="Captured orbit frame 1">
+          <figcaption><span class="kbd" id="orbitLabel">Frame 1 / 41</span></figcaption>
+        </figure>
+        <div class="orbit-slider-wrap">
+          <input type="range" id="orbitSlider" class="orbit-slider" min="1" max="41" step="1" value="1" aria-label="Orbit waypoint">
+        </div>
       </div>
       <p class="callout-inline"><strong>Why orbit?</strong> Single-frame depth centroids degrade near the edge of the camera frame. Forty one views give the offline pipeline enough parallax for stable triangulation.</p>
-    </template>
+    </div>
+  </article>
 
-    <template id="tpl-commander">
-      <header><span class="tag tag-plan">planning</span><h3>Commander &amp; Offline 6D pipeline</h3></header>
-      <p>Runs in a separate terminal so the user can still enter inputs without interrupting the code. On <code>/orbit_done</code> it runs the segmentation node, then the pose reconstruction node, and then sends the estimated positions of the foods to the pick and place node to plate the dish.</p>
-      <ol class="steps-inline">
-        <li><strong>segment_batch.py</strong> — The commander node tells this node to run after the armcircler node is done. This node is responsible for detecting the foods in each image using YOLO and SAM2. It takes in the images folder and outputs a folder of images called “segmented” with the YOLO bounding boxes and SAM2 masks. → <code>segmented/&lt;stem&gt;/&lt;stem&gt;_&lt;class&gt;_&lt;i&gt;_mask.png</code>.</li>
-        <li><strong>Output:</strong> The commander node receives <code>results/object_poses.npy</code> with one <code>position_base_link_m</code> per object from the 6D pose node. The commander node then loads those positions and filters out the ones that aren’t confident enough.</li>
-        <li><strong>Activation:</strong> Pressing Enter sends a "True" message under the topic <code>/start_pick_place</code> to the pick and place node, which tells it to begin pick and place. The commander node sorts the list of objects and postions based on the z height and sends them to the pick and place node under the topic <code>/planned_pick_tasks</code>, where the placement begins.</li>
+  <article id="detail-commander" class="detail-section">
+    <div class="detail-body">
+      <header><span class="tag tag-plan">planning</span><h3>Commander</h3></header>
+      <ol class="steps steps--center">
+        <li class="step">
+          <div class="step__body">
+            <p>The Commander node <strong>orchestrates the entire pipeline</strong>, stitching together all the individual components and running in parallel with <code>main.py</code> via the bringup file. It gives the user visibility into what stage the robot is currently in — whether it is orbiting, computing masks, or executing pick and place.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step__body">
+            <p>Commander also runs the <strong>filtering and planning logic</strong> before execution begins. It drops any triangulated position whose Z falls outside the range <code>[-0.03, 0.15] m</code> or whose confidence is at or below 0.6, then keeps only the single highest-confidence instance per class. From the surviving detections it computes the pick order and publishes the final task list to <code>main.py</code>.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step__body">
+            <p>Beyond orchestration, Commander was also <strong>a significant debugging aid</strong> throughout development. We could easily skip sections of the pipeline, such as the orbit phase, to jump directly to the parts we were actively testing. In early stages, before the automatic planning algorithm was complete, we could manually specify which object to pick, which let us tune the per-class grasp offsets independently of the rest of the system. Overall, Commander served as a quality-of-life node that made the project easier to iterate on and helped the final demo run smoothly.</p>
+          </div>
+        </li>
       </ol>
-      <p><strong>Position-only mode:</strong> depth is estimated from apparent mask radius (<code>z = f<sub>x</sub> · (d/2) / r<sub>px</sub></code>)</p>
-    </template>
+    </div>
+  </article>
 
-    <template id="tpl-poses">
-      <header><span class="tag tag-plan">planning</span><h3>6D Poses — Position & Orientation Reconstruction</h3></header>
-      <p>Given a set of images of the scene, corresponding masks for each object, CAD files describing each object, and transformation matrices for each camera angle, the Poses Node returns the position and optionally orientation of each object in the scene relative to the base link.</p>
-      
-      <h4>Position-Only Solving</h4>
-      <p>When only solving for position, the node implements a Weighted DLT triangulation algorithm with RANSAC for outlier rejection.</p>
-      <ol class="steps-inline">
-        <li>Using the x,y coordinates of each object in an image, derive the line upon which each object's centroid lies.</li>
-        <li>Estimate the object's depth using estimations of the object's size in the image based on the CAD files.</li>
-        <li>Apply a RANSAC algorithm to remove outliers and find a coordinate for the center of each object which most images agree upon.</li>
-      </ol>
+  <article id="detail-poses" class="detail-section">
+    <div class="detail-body">
+      <header><span class="tag tag-plan">planning</span><h3>6D Poses — Offline Position Reconstruction</h3></header>
+      <p><strong>segment_batch.py</strong> — The commander node tells this node to run after the armcircler node is done. This node is responsible for detecting the foods in each image using YOLO and SAM2. It takes in the images folder and outputs a folder of images called "segmented" with the YOLO bounding boxes and SAM2 masks. → <code>segmented/&lt;stem&gt;/&lt;stem&gt;_&lt;class&gt;_&lt;i&gt;_mask.png</code>.</p>
+      <div class="detail-media-row media-left">
+        <figure class="figure">
+          <img src="assets/sam2_masking.png" alt="Live segment window — YOLO boxes on the left, SAM2 masks on the right">
+        </figure>
+        <p class="callout-inline">This is an image from our tests with live masking, running YOLO detection and SAM2 masking live from a webcam. This gave us performance issues on our laptops, and we later ran out of time to integrate it into our live demo on the lab hardware. Ignore the bounding YOLO labels as our model was still in progress.</p>
+      </div>
 
-      <h4>Position + Orientation Solving</h4>
-      <p>When also solving for orientation, the node implements DINOv2 ViT-S/14 feature matching, iterative render-and-compare using Chamfer edge distance, and RANSAC for outlier removal.</p>
-      <ol class="steps-inline">
-        <li>Given an object mask, image and CAD file, estimate an initial position and orientation.</li>
-        <li>Tune the guess by shifting the orientation and depth iteratively, comparing a render using the existing CAD files against the mask.</li>
-        <li>Apply a RANSAC algorithm to remove outliers.</li>
-      </ol>
-    </template>
+      <figure class="carousel" aria-roledescription="carousel" aria-label="Segmentation results from the orbit inspection">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide is-active">
+            <img src="assets/seg_all_1.png" alt="Automatic Plate Detection" />
+            <figcaption><span class="kbd">01</span> Automatic Plate Detection</figcaption>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/seg_all_15.png" alt="Multi-Angle Scans" />
+            <figcaption><span class="kbd">02</span> Multi-Angle Scans</figcaption>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/seg_all_20.png" alt="Precise Masking" />
+            <figcaption><span class="kbd">03</span> Precise Masking</figcaption>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/seg_apple_15.png" alt="Individual Detection" />
+            <figcaption><span class="kbd">04</span> Individual Detection</figcaption>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
+        <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
+        <div class="carousel-dots" role="tablist" aria-label="Carousel pagination">
+          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" data-i="0"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 2" data-i="1"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 3" data-i="2"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 4" data-i="3"></button>
+        </div>
+      </figure>
 
-<template id="tpl-main">
-  <header>
-    <span class="tag tag-plan">planning</span>
-    <h3>UR7e_CubeGrasp — Pick-and-Place State Machine</h3>
-  </header>
-
-  <p>
-    Once segmentation and position estimation are complete, the commander node
-    waits for user input before beginning pick and place. After the user presses
-    <kbd>Enter</kbd>, the commander node sends a JSON-encoded list containing the
-    sorted objects and their estimated positions to <code>main.py</code> (the
-    pick-and-place node), and execution begins.
-  </p>
-
-  <p>
-    The pick-and-place pipeline is organized as a state machine that manages the
-    <code>busy</code> semaphore, the <code>job_queue</code>, and the full grasp
-    sequence. Every arm motion is executed asynchronously through trajectory
-    actions, while gripper commands are handled synchronously through service
-    calls. The node uses the same action design as the arm circler to fill
-    a queue of joint trajectories and execute them sequentially.
-  </p>
-
-  <p>
-    All operations begin from the observation frame. After arm circler finishes
-    and the user proceeds with pick and place, the arm moves to the observation
-    frame before starting the first cycle. After every pick and place operation,
-    the arm returns to this pose so the camera can view the entire workspace and
-    recalculate object positions. Re-observing the workspace prevents error
-    buildup that would occur if the arm relied only on predetermined
-    coordinates.
-  </p>
-
-  <ol class="steps-inline">
-    <li>
-      <strong>Home</strong> — observation frame (idle pose); gripper open.
-      Camera has a full view of the workspace for object detection and position
-      recalculation.
-    </li>
-
-    <li>
-      <strong>Object selection</strong> — the pick-and-place node uses the
-      sorted list of foods and estimated positions from the JSON payload to
-      determine pick order. YOLO detections provide object classes and centroids
-      for both foods and the plate.
-    </li>
-
-    <li>
-      <strong>Pre-pregrasp</strong> — IK solution generated at
-      <code>(cx, cy, cz + 0.5)</code> so the camera can observe the object from
-      a centered viewpoint, reducing fisheye distortion.
-    </li>
-
-    <li>
-      <strong>Refine</strong> — a second detection pass recalculates the
-      centroid from the centered viewpoint. This improves consistency when
-      objects are partially visible and rebuilds the queue using the full
-      <code>PICK_OFFSETS</code> configuration for the detected object class.
-    </li>
-
-    <li>
-      <strong>Hover → descend → grip → lift</strong> — chained IK solutions
-      reuse the previous joint solution as the seed to avoid discontinuities
-      such as elbow flips. Calibrated hardcoded offsets compensate for object height and
-      form factor differences between fruits while gripping.
-    </li>
-
-    <li>
-      <strong>Over plate → lower → release</strong> — translate relative to the
-      plate centroid detected by YOLO using the placement positions from the
-      JSON task list. The arm moves to
-      <code>(plate_x, plate_y, drop_z + 0.20)</code>, descends using hardcoded
-      <code>z</code> and <code>y</code> offsets, releases the object, and
-      retracts upward. The z-offset compensates for imperfect table-depth
-      estimation and gripper height, while the y-offset improves lateral
-      placement alignment.
-    </li>
-
-    <li>
-      <strong>Return home</strong> — <code>_going_home</code> clears
-      <code>busy</code> once the arm settles at the observation frame, allowing
-      the next pick cycle to begin safely. This repeats until no objects remain
-      in the task list and the module declares the process complete.
-    </li>
-  </ol>
-
-  <div class="mini-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Class</th>
-          <th>x</th>
-          <th>y</th>
-          <th>pre_grasp_z</th>
-          <th>grasp_z</th>
-          <th>lift_z</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>apple</td>
-          <td>0.01</td>
-          <td>0.005</td>
-          <td>0.16</td>
-          <td>0.125</td>
-          <td>0.185</td>
-        </tr>
-        <tr>
-          <td>tomato</td>
-          <td>0.015</td>
-          <td>0.005</td>
-          <td>0.16</td>
-          <td>0.14</td>
-          <td>0.185</td>
-        </tr>
-        <tr>
-          <td>cake</td>
-          <td>0.02</td>
-          <td>0.005</td>
-          <td>0.20</td>
-          <td>0.15</td>
-          <td>0.20</td>
-        </tr>
-        <tr>
-          <td>strawberry</td>
-          <td>0.02</td>
-          <td>0.005</td>
-          <td>0.20</td>
-          <td>0.14</td>
-          <td>0.20</td>
-        </tr>
-        <tr>
-          <td><em>default</em></td>
-          <td>0.02</td>
-          <td>0.005</td>
-          <td>0.16</td>
-          <td>0.14</td>
-          <td>0.185</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h4>State Management Flags</h4>
-
-  <p>
-    The pipeline uses boolean state flags to coordinate perception, trajectory
-    execution, and grasp planning. These flags prevent overlapping commands and
-    ensure the robot only reacts to detections when it is in a safe observation
-    state.
-  </p>
-
-  <div class="mini-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Flag</th>
-          <th>Purpose</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>busy</code></td>
-          <td>
-            Indicates that the arm is currently moving or an active pick cycle
-            is running. New detections are ignored until the arm returns home or
-            a trajectory failure occurs.
-          </td>
-        </tr>
-
-        <tr>
-          <td><code>_refining</code></td>
-          <td>
-            Enabled while the arm moves toward the pre-pregrasp pose. During
-            this phase, live detections are temporarily suppressed until refined
-            centroid estimation is completed.
-          </td>
-        </tr>
-
-        <tr>
-          <td><code>_at_pre_pregrasp</code></td>
-          <td>
-            Signals that the arm has reached the pre-pregrasp waypoint and that
-            refined centroid detection should begin.
-          </td>
-        </tr>
-
-        <tr>
-          <td><code>_going_home</code></td>
-          <td>
-            Indicates that the home waypoint is currently queued or the arm is
-            actively returning to the observation frame.
-          </td>
-        </tr>
-
-        <tr>
-          <td><code>pick_place_enabled</code></td>
-          <td>
-            Enables the full pick-and-place pipeline after activation from the
-            commander node.
-          </td>
-        </tr>
-
-        <tr>
-          <td><code>_pick_triggered</code></td>
-          <td>
-            Prevents duplicate pick attempts by ensuring only one live detection
-            can trigger a pick operation at a time.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p class="callout-inline">
-    <strong>Detection filtering:</strong> The detection node filters out objects
-    within a specified radius of the plate so the pick-and-place node does not
-    attempt to pick foods that have already been placed.
-  </p>
-
-  <p class="callout-inline">
-    <strong>Refined centroid calculation:</strong> Recalculating the centroid
-    from 0.5 m above the object produces more stable measurements by reducing
-    fisheye distortion and handling partially visible objects. The
-    <code>PICK_OFFSETS</code> per-class adjustments can then be applied
-    consistently across all pick cycles.
-  </p>
-</template>
-
-    <template id="tpl-ik">
-      <header><span class="tag tag-plan">planning</span><h3>IKPlanner</h3></header>
-      <p>Wraps the two MoveIt services we actually need: GetPositionIK and GetMotionPlan. GetPositionIK is a MoveIt service that computes the inverse kinematics for a specific point in 3D space, and GetMotionPlan makes sure that this trajectory is safe.</p>
+      <h4>Background and Motivation</h4>
+      <p>The original plan for localizing food items on the plate was to use COLMAP to reconstruct a 3D point cloud from the 41 images captured during the arm's orbital inspection pass. This was abandoned for two reasons:</p>
       <ul>
-        <li><code>/compute_ik</code> —  Cartesian target → joint solution. Input is the current joint states and the desired position and rotation as a quaternion. The position and rotation pertain to the end effector frame “tool0”.</li>
-        <li><code>/plan_kinematic_path</code> — uses Rapidly-exploring Random Tree (RRT) to find a joint trajectory that is feasible and avoid collisions.</li>
+        <li><strong>Too slow.</strong> COLMAP's feature matching and bundle adjustment pipeline is computationally expensive — waiting several minutes between the orbit phase and the pick phase was not acceptable at demo timescales.</li>
+        <li><strong>Too sparse.</strong> Food items are small, visually uniform objects on a reflective plate surface, which frustrates feature-based reconstruction. There are few distinctive keypoints, and the ones that exist don't triangulate reliably across views. The resulting point cloud had little to no geometry in the regions that actually mattered.</li>
       </ul>
-    </template>
-
-    <template id="tpl-tf">
-      <header><span class="tag tag-plan">planning</span><h3>static_tf_transform</h3></header>
-      <p>Broadcasts the constant <code>wrist_3_link → camera_link</code> transform as a homogenous transformation 4×4 matrix <code>G</code>.</p>
-      <p>This is the bridge between the realsense camera and the ur7e robot. It allows the robot arm to plan waypoints with the camera’s position in mind (i.e. armcircler).</p>
-    </template>
-
-    <template id="tpl-moveit">
-      <header><span class="tag tag-plan">external</span><h3>MoveIt 2</h3></header>
-      <p>Provides the two services the executor depends on:</p>
+      <p>The solution was to abandon general-purpose reconstruction entirely and exploit the structure of the problem instead. Two facts made this possible:</p>
       <ul>
-        <li><code>/compute_ik</code> — used at every Cartesian waypoint.</li>
-        <li><code>/plan_kinematic_path</code> — RRTConnect plans between joint configurations, executed through <code>FollowJointTrajectory</code>.</li>
+        <li>Because the robot arm is the image capture platform, every camera pose is already known precisely from forward kinematics — there is no need to solve the structure-from-motion problem at all.</li>
+        <li>Because YOLO already identifies objects with bounding boxes and instance masks, 3D localization reduces to a much simpler sub-problem: given a set of known camera poses and 2D observations of an object, find its 3D position. This is classical multi-view triangulation, and it runs in milliseconds.</li>
       </ul>
-      <p>RViz is launched alongside it for live visual debugging of trajectories.</p>
-    </template>
-  </div>
+
+      <h4>What the Pipeline Does</h4>
+      <p>The offline pose estimation pipeline takes three inputs:</p>
+      <dl class="spec">
+        <div class="spec-row"><dt>Poses</dt><dd>The 40 end-effector poses recorded during the orbit (<code>poses.npy</code>)</dd></div>
+        <div class="spec-row"><dt>Images</dt><dd>The 40 corresponding images (<code>captured_images/</code>)</dd></div>
+        <div class="spec-row"><dt>Masks</dt><dd>The per-image YOLO+SAM2 instance masks (<code>segmented/</code>)</dd></div>
+      </dl>
+      <p>It outputs <code>results/object_poses.npy</code> — a list of detected objects with their estimated 3D position in the robot's <code>base_link</code> frame and a confidence score.</p>
+      <p>The pipeline runs as a subprocess under the SAM2 virtual environment's Python interpreter rather than the ROS Python, because it depends on PyTorch, SAM2, trimesh, and pyrender — none of which are installed in the ROS workspace. This keeps the two dependency trees cleanly separated while still allowing the Commander node to trigger the pipeline and consume its output.</p>
+
+      <h4>How Position-Only Mode Works</h4>
+      <p>The pipeline runs in <code>position_only=True</code> mode, which skips the full 6DoF render-and-compare path and estimates only 3D position. It does this in three steps.</p>
+      <div class="pose-pair">
+        <figure class="figure">
+          <img src="assets/pose_visualization2.png" alt="Per-object masks and centroids projected back onto a captured frame">
+          <figcaption>Algorithm input: SAM2 masks and triangulated centroids projected back onto a captured frame.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/pose_visualization.png" alt="3D scatter of estimated food positions with camera frustum">
+          <figcaption>Algorithm output: final per-object positions in <code>base_link</code>, with camera frustum for scale.</figcaption>
+        </figure>
+      </div>
+      <ol class="steps steps--flow">
+        <li class="step">
+          <span class="step__num">01</span>
+          <div class="step__body">
+            <p><strong>Step 1: Camera pose computation.</strong> For each waypoint, the known end-effector pose is converted into a camera-to-world transform via a chain of three operations:</p>
+            <ul>
+              <li>End-effector pose (position + quaternion) → 4x4 homogeneous transform <code>world_T_ee</code></li>
+              <li>Invert → <code>ee_T_world</code></li>
+              <li>Compose with a fixed camera-mount offset <code>T_CAM_FROM_EE</code> (camera sits +3 cm forward and 13.5 cm above the wrist) → <code>cam_T_world</code></li>
+            </ul>
+            <p>This transform chain is what makes the approach work: because the robot arm is the camera rig, known kinematics replace the bundle adjustment step entirely.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num">02</span>
+          <div class="step__body">
+            <p><strong>Step 2: Per-view 2D observation.</strong> For each image, the pipeline loads the SAM2 masks and processes each detected object:</p>
+            <ul>
+              <li><strong>Centroid:</strong> computed as the median pixel coordinate (median rather than mean, to be robust against edge clipping)</li>
+              <li><strong>Apparent radius:</strong> estimated from mask area as <code>r_px = sqrt(area / pi)</code></li>
+              <li><strong>Depth:</strong> recovered from apparent size using <code>z_m = fx * (diameter_m / 2) / r_px</code>, where <code>diameter_m</code> is the known physical diameter of the object class stored in <code>constants.py</code></li>
+              <li><strong>X and Y in camera frame:</strong> unprojected from the centroid using the standard pinhole inverse</li>
+            </ul>
+            <p>The depth estimate is essentially monocular depth recovery using known object size as a scale reference — a simple but effective stand-in for a depth camera at this scale.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num">03</span>
+          <div class="step__body">
+            <p><strong>Step 3: RANSAC triangulation.</strong> Each object accumulates observations across all views in which it appears. These are passed to a RANSAC-based weighted Direct Linear Transform (DLT) triangulator:</p>
+            <ul>
+              <li>The RANSAC outer loop randomly samples pairs of views, triangulates a candidate 3D position from each pair, and counts inliers by reprojection error (threshold: 8 pixels)</li>
+              <li>The best inlier set is then used for a final weighted DLT, where each view's contribution is weighted by its mask area — larger, more clearly visible instances get more influence</li>
+              <li>This robustly rejects views where the object was partially occluded, seen at a glancing angle, or near the image boundary</li>
+            </ul>
+            <p>Confidence is computed as the fraction of views in which the object was visible, capped at 1.0. The Commander uses this downstream to drop detections at or below 0.6 confidence and keep only the single highest-confidence instance per class.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h4>Why Not Full 6DoF Orientation?</h4>
+      <div class="detail-media-row media-left">
+        <figure class="figure">
+          <img src="assets/6d_pose.png" alt="Estimated poses with X/Y/Z axes overlaid on a captured frame plus the per-object pose table">
+          <figcaption>Render-and-compare result: red/green/blue axes show each object's estimated orientation, with the terminal table giving (Z°, Y°, X°) Euler angles, translation, and per-object confidence.</figcaption>
+        </figure>
+        <div>
+          <p>The full pipeline (when <code>position_only=False</code>) would additionally estimate object orientation using DINOv2 visual features and rendered STL reference views — essentially a render-and-compare approach where the object's pose is refined until the rendered appearance matches the observed one. This was left unused for the demo for the same reasons COLMAP was abandoned:</p>
+          <ul>
+            <li>It requires STL mesh models for every object class</li>
+            <li>It requires a GPU for DINOv2 inference</li>
+            <li>It adds significant computation per object</li>
+          </ul>
+        </div>
+      </div>
+      <p>For a pick-and-place task on roughly symmetric food items, orientation is largely unnecessary anyway. The gripper approaches from above, and the contact geometry is forgiving enough that a position-only estimate is sufficient for a reliable grasp.</p>
+      <p>The orientation that does matter — the end-effector's approach angle relative to each object — is handled not by the pose estimator but by the per-class grasp offset table in <code>main.py</code>. This encodes empirically tuned x/y corrections for camera-to-gripper misalignment and z heights for the pre-grasp, grasp, and lift phases. This is simpler and more reliable than estimating object orientation from images, because it captures the actual systematic error of the specific robot and camera mount rather than inferring object geometry from appearance.</p>
+    </div>
+  </article>
+
+  <article id="detail-main" class="detail-section">
+    <div class="detail-body">
+      <header>
+        <span class="tag tag-plan">planning</span>
+        <h3>UR7e_CubeGrasp — Pick-and-Place State Machine</h3>
+      </header>
+
+      <p>
+        Once segmentation and position estimation are complete, the commander node
+        waits for user input before beginning pick and place. After the user presses
+        <kbd>Enter</kbd>, the commander node sends a JSON-encoded list containing the
+        sorted objects and their estimated positions to <code>main.py</code> (the
+        pick-and-place node), and execution begins.
+      </p>
+
+      <figure class="figure">
+        <img src="assets/pick_place.jpg" alt="Arm performing pick and place on the plate">
+      </figure>
+
+      <p>
+        The pick-and-place pipeline is organized as a state machine that manages the
+        <code>busy</code> semaphore, the <code>job_queue</code>, and the full grasp
+        sequence. Every arm motion is executed asynchronously through trajectory
+        actions, while gripper commands are handled synchronously through service
+        calls. The node uses the same action design as the arm circler to fill
+        a queue of joint trajectories and execute them sequentially.
+      </p>
+
+      <p>
+        All operations begin from the observation frame. After arm circler finishes
+        and the user proceeds with pick and place, the arm moves to the observation
+        frame before starting the first cycle. After every pick and place operation,
+        the arm returns to this pose so the camera can view the entire workspace and
+        recalculate object positions. Re-observing the workspace prevents error
+        buildup that would occur if the arm relied only on predetermined
+        coordinates.
+      </p>
+
+      <ol class="steps-inline">
+        <li>
+          <strong>Home</strong> — observation frame (idle pose); gripper open.
+          Camera has a full view of the workspace for object detection and position
+          recalculation.
+        </li>
+
+        <li>
+          <strong>Object selection</strong> — the pick-and-place node uses the
+          sorted list of foods and estimated positions from the JSON payload to
+          determine pick order. YOLO detections provide object classes and centroids
+          for both foods and the plate.
+        </li>
+
+        <li>
+          <strong>Pre-pregrasp</strong> — IK solution generated at
+          <code>(cx, cy, cz + 0.5)</code> so the camera can observe the object from
+          a centered viewpoint, reducing fisheye distortion.
+        </li>
+
+        <li>
+          <strong>Refine</strong> — a second detection pass recalculates the
+          centroid from the centered viewpoint. This improves consistency when
+          objects are partially visible and rebuilds the queue using the full
+          <code>PICK_OFFSETS</code> configuration for the detected object class.
+        </li>
+
+        <li>
+          <strong>Hover → descend → grip → lift</strong> — chained IK solutions
+          reuse the previous joint solution as the seed to avoid discontinuities
+          such as elbow flips. Calibrated hardcoded offsets compensate for object height and
+          form factor differences between fruits while gripping.
+        </li>
+
+        <li>
+          <strong>Over plate → lower → release</strong> — translate relative to the
+          plate centroid detected by YOLO using the placement positions from the
+          JSON task list. The arm moves to
+          <code>(plate_x, plate_y, drop_z + 0.20)</code>, descends using hardcoded
+          <code>z</code> and <code>y</code> offsets, releases the object, and
+          retracts upward. The z-offset compensates for imperfect table-depth
+          estimation and gripper height, while the y-offset improves lateral
+          placement alignment.
+        </li>
+
+        <li>
+          <strong>Return home</strong> — <code>_going_home</code> clears
+          <code>busy</code> once the arm settles at the observation frame, allowing
+          the next pick cycle to begin safely. This repeats until no objects remain
+          in the task list and the module declares the process complete.
+        </li>
+      </ol>
+
+      <div class="mini-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>x</th>
+              <th>y</th>
+              <th>pre_grasp_z</th>
+              <th>grasp_z</th>
+              <th>lift_z</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>apple</td>
+              <td>0.01</td>
+              <td>0.005</td>
+              <td>0.16</td>
+              <td>0.125</td>
+              <td>0.185</td>
+            </tr>
+            <tr>
+              <td>tomato</td>
+              <td>0.015</td>
+              <td>0.005</td>
+              <td>0.16</td>
+              <td>0.14</td>
+              <td>0.185</td>
+            </tr>
+            <tr>
+              <td>cake</td>
+              <td>0.02</td>
+              <td>0.005</td>
+              <td>0.20</td>
+              <td>0.15</td>
+              <td>0.20</td>
+            </tr>
+            <tr>
+              <td>strawberry</td>
+              <td>0.02</td>
+              <td>0.005</td>
+              <td>0.20</td>
+              <td>0.14</td>
+              <td>0.20</td>
+            </tr>
+            <tr>
+              <td><em>default</em></td>
+              <td>0.02</td>
+              <td>0.005</td>
+              <td>0.16</td>
+              <td>0.14</td>
+              <td>0.185</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>State Management Flags</h4>
+
+      <p>
+        The pipeline uses boolean state flags to coordinate perception, trajectory
+        execution, and grasp planning. These flags prevent overlapping commands and
+        ensure the robot only reacts to detections when it is in a safe observation
+        state.
+      </p>
+
+      <div class="mini-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>busy</code></td>
+              <td>
+                Indicates that the arm is currently moving or an active pick cycle
+                is running. New detections are ignored until the arm returns home or
+                a trajectory failure occurs.
+              </td>
+            </tr>
+
+            <tr>
+              <td><code>_refining</code></td>
+              <td>
+                Enabled while the arm moves toward the pre-pregrasp pose. During
+                this phase, live detections are temporarily suppressed until refined
+                centroid estimation is completed.
+              </td>
+            </tr>
+
+            <tr>
+              <td><code>_at_pre_pregrasp</code></td>
+              <td>
+                Signals that the arm has reached the pre-pregrasp waypoint and that
+                refined centroid detection should begin.
+              </td>
+            </tr>
+
+            <tr>
+              <td><code>_going_home</code></td>
+              <td>
+                Indicates that the home waypoint is currently queued or the arm is
+                actively returning to the observation frame.
+              </td>
+            </tr>
+
+            <tr>
+              <td><code>pick_place_enabled</code></td>
+              <td>
+                Enables the full pick-and-place pipeline after activation from the
+                commander node.
+              </td>
+            </tr>
+
+            <tr>
+              <td><code>_pick_triggered</code></td>
+              <td>
+                Prevents duplicate pick attempts by ensuring only one live detection
+                can trigger a pick operation at a time.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="callout-inline">
+        <strong>Detection filtering:</strong> The detection node filters out objects
+        within a specified radius of the plate so the pick-and-place node does not
+        attempt to pick foods that have already been placed.
+      </p>
+
+      <div class="design-choices">
+        <h4>Design Choices</h4>
+        <p>One challenge was determining the correct grasp offsets for each object. Due to varying heights and geometries, the calculated centroid was skewed differently depending on the object, so we introduced per-class hardcoded offsets that let us reuse the same centroid calculation algorithm while correcting for each object's specific error. A similar approach was used for placing, though here a single shared offset was sufficient to correct the constant positional error in the calculated drop pose.</p>
+        <p>A deeper issue was that even for the same object, the offsets were inconsistent depending on where the object fell in the camera's field of view from the home position. Objects near the edges were distorted by lens curvature, and objects partially outside the frame had their centroid calculated from only the visible portion. To address this, we implemented a two-phase picking approach. Rather than descending directly to the centroid calculated at the home position, the arm first moves to that centroid with an additional 0.5 m in Z, placing the camera directly above the object at a height where it appears near the image center with minimal distortion. The centroid is then recalculated from this more controlled viewpoint before the arm descends to grasp. By always computing the final centroid from a roughly fixed overhead frame, the offsets became significantly more consistent.</p>
+        <p>For the placing order, we needed a planning algorithm to decide which objects to plate first. We chose to sort by ascending Z coordinate, picking the lowest object first. For our use case this worked well, though we recognize that a more complex plating arrangement — layered components or radial layouts — would call for a more sophisticated ordering strategy, such as bottom-to-top or center-outward.</p>
+      </div>
+    </div>
+  </article>
+
 </section>
 
 <!-- ============================================================ RESULTS -->
 <section id="results" class="section section-tint">
   <div class="section-head">
-    <h2><span class="num">4</span> Results</h2>
+    <h2><span class="num">5</span> Results</h2>
   </div>
 
   <div class="two-col results-grid">
@@ -730,50 +805,28 @@
 
     <figure class="figure">
       <span class="ph-tag">FINAL PLATING — BEFORE / AFTER</span>
-      <p>1st image is the original plate, 2nd image is the recreated plate.</p>
-      <figure class="hero-figure carousel plating-carousel" aria-roledescription="carousel" aria-label="Final plating comparison">
-        <div class="carousel-track">
-          <div class="carousel-slide is-active">
-            <div class="plate-strip plate-top"></div>
-          </div>
-          <div class="carousel-slide">
-            <div class="plate-strip plate-bottom"></div>
-          </div>
-        </div>
-        <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
-        <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
-        <div class="carousel-dots" role="tablist" aria-label="Carousel pagination">
-          <button class="carousel-dot is-active" role="tab" data-i="0"></button>
-          <button class="carousel-dot" role="tab" data-i="1"></button>
-        </div>
-      </figure>
+      <p>Drag the handle to wipe between the original plate and the robot&rsquo;s recreation.</p>
+      <div class="compare-slider" role="img" aria-label="Original vs recreated plate, drag to compare">
+        <div class="compare-base"  style="background-image: url('assets/before_and_after_plating.jpg'); background-size: 109.5% 219%; background-position: 40.6% 95.4%;"></div>
+        <div class="compare-clip"  style="background-image: url('assets/before_and_after_plating.jpg'); background-position: center 0%;"></div>
+        <span class="compare-label compare-label-left"  aria-hidden="true">ORIGINAL</span>
+        <span class="compare-label compare-label-right" aria-hidden="true">RECREATED</span>
+        <button type="button" class="compare-handle" role="slider"
+                aria-label="Compare slider"
+                aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <span class="compare-arrows" aria-hidden="true">‹ ›</span>
+        </button>
+      </div>
     </figure>
   </div>
-</section>
-
-<!-- ============================================================ DEMO VIDEO -->
-<section id="demo-video" class="section section-tint demo-centered">
-  <div class="section-head">
-    <h2><span class="num">▶</span> Demo Video</h2>
-    <p class="section-sub">End-to-end demo run — orbit inspection → segmentation → pick-and-place sequence.</p>
-  </div>
-  <figure class="figure figure-wide" style="display:flex;justify-content:center;margin:0 auto;padding:0;max-width:1140px;">
-    <div class="video-frame" style="max-width:840px;width:100%;margin:0 auto;">
-      <iframe
-        src="https://drive.google.com/file/d/1ZvJWHgZEgT7H33ZIcDSmg-mxVdF9k3Mp/preview"
-        allow="autoplay"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </figure>
 </section>
 
 <!-- ============================================================ STATUS -->
 <section id="conclusion" class="section">
   <div class="section-head">
-    <h2><span class="num">5</span> Conclusion</h2>
+    <h2><span class="num">6</span> Conclusion</h2>
     <p class="section-sub">
-      Overall, the project was successful in accordance to our original proposal. With our computer vision and placement for rigid objects 
+      Overall, the project was successful in accordance to our original proposal. With our computer vision and placement for rigid objects
       working, we firmly believe our project can continue to evolve for even more complex culinary situations.
       While the video demonstration was long in duration, in practical use, the robot will only need to scan a dish once. After that, the robot can
       recreate that dish as many times as necessary.
@@ -787,7 +840,7 @@
         <li>Circular arm movement for scanning</li>
         <li>Live YOLO bounding boxes + object classification</li>
         <li>SAM2 batch segmentation to estimate poses</li>
-        <li>RANSAC triangulation</code></li>
+        <li>RANSAC triangulation</li>
         <li>Automated pick and place, including stacked ingredients</li>
       </ul>
     </div>
@@ -816,27 +869,27 @@
 <!-- ============================================================ AI Disclosure -->
 <section id="disclosure" class="section">
   <div class="section-head">
-    <h2><span class="num">6</span> AI Use Disclosure</h2>
-    <p class="section-sub">Throughout the project creation process, ChatGPT, Gemini, and Claude Code were used in supporting roles for debugging, 
+    <h2><span class="num">7</span> AI Use Disclosure</h2>
+    <p class="section-sub">Throughout the project creation process, ChatGPT, Gemini, and Claude Code were used in supporting roles for debugging,
       code integration, logic design, and website development.
     </p>
   </div>
 
   <div class="section-body">
     <h3>Bug Fixes</h3>
-    <p>Although we were able to independently resolve most issues, several sections of the codebase contained logical errors, particularly during 
-      integration of the UR7e arm. These issues often resulted in unintended robot behavior or runtime errors that prevented execution. 
+    <p>Although we were able to independently resolve most issues, several sections of the codebase contained logical errors, particularly during
+      integration of the UR7e arm. These issues often resulted in unintended robot behavior or runtime errors that prevented execution.
       AI was used to suggest edits, including adding, removing, and modifying lines of code to resolve these bugs efficiently.
     </p>
 
     <h3>Code Integration</h3>
-    <p>The project was developed in modular components (arm circling, bounding boxes, pixel masking, etc), allowing parallel development across team members. 
-      However, while each module functioned independently, integrating them into a unified system often resulted in code that would often fail after minor adjustments. 
+    <p>The project was developed in modular components (arm circling, bounding boxes, pixel masking, etc), allowing parallel development across team members.
+      However, while each module functioned independently, integrating them into a unified system often resulted in code that would often fail after minor adjustments.
       AI was used to consolidate these components into a cohesive pipeline, including merging scripts and restructuring packages, to allow the packagers to work together.
     </p>
 
     <h3>Logic and Implementation Support</h3>
-    <p>Although the intended system behavior was well understood, AI was used to assist in translating high-level ideas into implementation details. This included 
+    <p>Although the intended system behavior was well understood, AI was used to assist in translating high-level ideas into implementation details. This included
       generating pseudocode, as well as adjusting logic as necessary to allow the pipeline to work as intended.
     </p>
 
